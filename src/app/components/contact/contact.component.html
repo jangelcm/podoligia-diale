@@ -1,0 +1,48 @@
+<section class="max-w-2xl mx-auto p-6 mt-10 animate-fadeInDown">
+    <h2 class="text-3xl font-bold text-cyan-700 dark:text-cyan-300 mb-6 text-center">Contáctame</h2>
+
+    <!-- Redes sociales -->
+    <div class="flex justify-center rounded-2xl dark:bg-violet-200 gap-6 mb-8">
+        <a href="https://www.instagram.com/dialepodologia22" target="_blank" aria-label="Instagram"
+            class="hover:scale-110 transition">
+            <img src="home/instagram.svg" alt="Instagram" class="w-8 h-8" />
+        </a>
+        <a href="https://www.tiktok.com/@diale.podologia" target="_blank" aria-label="TikTok"
+            class="hover:scale-110 transition">
+            <img src="home/tiktok.svg" alt="TikTok" class="w-8 h-8" />
+        </a>
+        <a href="https://wa.me/916541671" target="_blank" aria-label="WhatsApp" class="hover:scale-110 transition">
+            <img src="home/whatsapp.svg" alt="WhatsApp" class="w-8 h-8" />
+        </a>
+    </div>
+
+    <!-- Formulario -->
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-4">
+        <div>
+            <label class="block mb-1 text-cyan-700 dark:text-cyan-300 font-medium">Nombre</label>
+            <input type="text" formControlName="name"
+                class="w-full border rounded-xl p-2 bg-gray-50 dark:bg-gray-800 dark:text-gray-100 focus:ring-2 focus:ring-cyan-400 focus:outline-none"
+                placeholder="Tu nombre" />
+        </div>
+        <div>
+            <label class="block mb-1 text-cyan-700 dark:text-cyan-300 font-medium">Correo electrónico</label>
+            <input type="email" formControlName="email"
+                class="w-full border rounded-xl p-2 bg-gray-50 dark:bg-gray-800 dark:text-gray-100 focus:ring-2 focus:ring-cyan-400 focus:outline-none"
+                placeholder="correo@ejemplo.com" />
+        </div>
+        <div>
+            <label class="block mb-1 text-cyan-700 dark:text-cyan-300 font-medium">Mensaje</label>
+            <textarea formControlName="message" rows="4"
+                class="w-full border rounded-xl p-2 bg-gray-50 dark:bg-gray-800 dark:text-gray-100 focus:ring-2 focus:ring-cyan-400 focus:outline-none"
+                placeholder="¿Cómo puedo ayudarte?"></textarea>
+        </div>
+        <button type="submit"
+            class="bg-cyan-700 dark:bg-cyan-600 text-white px-6 py-2 rounded-xl hover:bg-cyan-800 dark:hover:bg-cyan-700 transition disabled:opacity-50 font-semibold shadow"
+            [disabled]="contactForm.invalid">
+            Enviar mensaje
+        </button>
+    </form>
+
+    <p *ngIf="submitted" class="text-green-600 dark:text-green-400 mt-4">¡Gracias por tu mensaje! Te responderé pronto.
+    </p>
+</section>

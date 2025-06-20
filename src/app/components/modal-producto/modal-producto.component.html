@@ -1,0 +1,62 @@
+<div class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+    <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg max-w-2xl w-full p-6 relative animate-fadeInDown">
+        <button (click)="closeDialog()"
+            class="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold">&times;</button>
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- Imagen y precio -->
+            <div class="flex flex-col items-center">
+                <img [src]="product().imagenUrl" alt="Imagen del producto"
+                    class="rounded-lg shadow w-48 h-48 object-cover mb-4" />
+                <div class="text-sm text-gray-500 mb-2">Precio por unidad</div>
+
+                <div class="text-xl font-bold text-primary-700 dark:text-primary-200 mb-2">
+                    {{ product().precio | currency:'PEN':'symbol':'1.2-2' }}
+                </div>
+                <div class="text-sm" [ngClass]="product().stock === 0 ? 'text-red-500 font-bold' : 'text-gray-500'">
+                    <span *ngIf="product().stock! > 0">Stock: {{ product().stock }}</span>
+                    <span *ngIf="product().stock === 0">Agotado</span>
+                </div>
+                <div class="flex flex-col gap-2 mt-4">
+                    <button (click)="goToCart()" [disabled]="product().stock === 0 || cantidad < 1"
+                        class="flex items-center gap-2 px-4 py-2 bg-cyan-600 text-white rounded shadow hover:bg-cyan-700 transition disabled:opacity-50">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M3 3h2l.4 2M7 13h10l4-8H5.4" stroke-linecap="round" stroke-linejoin="round" />
+                            <circle cx="9" cy="21" r="1" />
+                            <circle cx="20" cy="21" r="1" />
+                        </svg>
+                        Comprar e ir a carrito
+                    </button>
+                    <button (click)="enviarWhatsapp()" [disabled]="product().stock === 0 || cantidad < 1"
+                        class="flex items-center disabled:opacity-50 gap-2 px-6 py-3 rounded-lg bg-green-500 text-white font-semibold shadow hover:bg-green-600 transition w-full sm:w-auto"
+                        aria-label="Enviar a WhatsApp" title="Enviar a WhatsApp">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.031-.967-.273-.099-.472-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51-.173-.008-.372-.01-.571-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.099 3.2 5.077 4.366.71.306 1.263.489 1.695.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.288.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                            <path
+                                d="M12.004 2.003c-5.514 0-9.997 4.484-9.997 9.997 0 1.762.462 3.479 1.337 4.991l-1.409 5.151 5.273-1.384c1.475.807 3.147 1.244 4.796 1.244h.002c5.514 0 9.997-4.484 9.997-9.997 0-2.669-1.04-5.178-2.929-7.067-1.889-1.889-4.398-2.929-7.07-2.929zm0 17.995c-1.518 0-3.004-.404-4.287-1.168l-.307-.183-3.129.822.835-3.054-.2-.314c-.832-1.308-1.272-2.823-1.272-4.388 0-4.411 3.588-7.999 7.999-7.999 2.137 0 4.146.832 5.656 2.343 1.511 1.511 2.343 3.52 2.343 5.656 0 4.411-3.588 7.999-7.999 7.999z" />
+                        </svg>
+                        Enviar a WhatsApp
+                    </button>
+                </div>
+            </div>
+            <!-- Descripción -->
+            <div>
+                <h2 class="text-2xl font-bold mb-6 text-cyan-700 dark:text-cyan-300">{{ product().nombre }}</h2>
+                <p class="text-gray-700 dark:text-gray-200 mb-4">{{ product().descripcion }}</p>
+                <div class="flex items-center gap-2 mb-4">
+                    <label for="cantidad" class="text-gray-600 dark:text-gray-300">Cantidad:</label>
+                    <input id="cantidad" type="number" min="1" [max]="product().stock!" [(ngModel)]="cantidad"
+                        class="w-20 border rounded px-2 py-1 dark:bg-gray-800 dark:text-gray-100" />
+                </div>
+                <div class="flex gap-2 mt-6">
+                    <button (click)="closeDialog()"
+                        class="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition">Cancelar</button>
+                    <button (click)="addToCart()" [disabled]="product().stock === 0 || cantidad < 1"
+                        class="px-4 py-2 rounded-lg bg-violet-100 dark:bg-cyan-900 text-violet-700 dark:text-cyan-200 font-semibold shadow hover:bg-violet-200 dark:hover:bg-cyan-800 transition disabled:opacity-50">Añadir
+                        al carrito</button>
+                </div>
+                <div *ngIf="mensaje" class="mt-4 text-green-600 dark:text-green-400 font-semibold">{{ mensaje }}</div>
+            </div>
+        </div>
+    </div>
+</div>

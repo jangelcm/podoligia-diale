@@ -1,1 +1,84 @@
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: #f0f7fa;
+  --color-secondary: var(--color-blue-500);
+  --text-primary-600: oklch(0.925 18 );
+
+  @keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-32px); /* Empieza arriba */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+}
+
+@layer utilities {
+  .animate-fadeInDown {
+    animation: fadeInDown 1.2s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+}
+
+body {
+    @apply bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-200;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+}
+
+a {
+    /* @apply text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300; */
+}
+
+
+
+/* Toolbar styles */
+.toolbar {
+    /* @apply bg-gray-100 dark:bg-gray-800 shadow-md; */
+}
+
+/* Landing page styles */
+.landing-page {
+    /* @apply flex flex-col items-center justify-center text-center; */
+}
+
+.landing-page img {
+    /* @apply w-full h-auto max-w-lg; */
+}
+
+/* Product card styles */
+/* .product-card {
+    @apply border rounded-lg shadow-md p-4 m-2;
+}
+
+.product-card .stock {
+    @apply text-red-500 font-bold;
+} */
+
+
+.modal-content {
+    /* @apply bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg; */
+}
+
+/* Cart styles */
+.cart {
+    @apply p-4;
+}
+
+.cart-item {
+    /* @apply flex justify-between items-center border-b py-2; */
+}
+
+/* Recommendations styles */
+.recommendations {
+    @apply p-4 bg-gray-50 dark:bg-gray-700;
+}
+
