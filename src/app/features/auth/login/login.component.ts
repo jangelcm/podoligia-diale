@@ -33,8 +33,22 @@ export class LoginComponent {
     private router: Router
   ) {
     this.form = this.fb.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
+      username: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(20),
+        ],
+      ],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.maxLength(20),
+        ],
+      ],
       email: ['', []], // Se activa solo en registro
     });
   }

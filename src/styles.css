@@ -11,7 +11,7 @@
   @keyframes fadeInDown {
   0% {
     opacity: 0;
-    transform: translateY(-32px); /* Empieza arriba */
+    transform: translateY(-80px); /* Empieza arriba */
   }
   100% {
     opacity: 1;
@@ -20,10 +20,42 @@
 }
 }
 
-@layer utilities {
-  .animate-fadeInDown {
-    animation: fadeInDown 1.2s cubic-bezier(0.4, 0, 0.2, 1) both;
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
   }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+
+@layer utilities {
+    .animate-fadeInDown {
+        animation: fadeInDown 1.2s cubic-bezier(0.4, 0, 0.2, 1) both;
+    }
+  
+    .animate-slide-in-right {
+    animation: slide-in-right 1.2s cubic-bezier(0.4, 0, 0.2, 1) both;
+    }
+
+    .animate-slide-in-left {
+    animation: slide-in-left 2.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+    }
 }
 
 body {

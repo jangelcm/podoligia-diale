@@ -10,7 +10,7 @@ import { CitasService } from '../../core/services/citas.service';
 import { CalendarComponent } from './calendar.component';
 import { AuthService } from 'core/services/security/auth.service';
 import { AuthHelper } from '../../core/helpers/auth.helper';
-import { FechaDDMMYYYY } from 'pipes/fechaDDMMYYYY.pipe';
+import { FechaDDMMYYYY } from 'shared/pipes/fechaDDMMYYYY.pipe';
 import { Cita } from 'core/models/cita';
 
 @Component({

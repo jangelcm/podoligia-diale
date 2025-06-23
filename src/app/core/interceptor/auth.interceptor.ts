@@ -6,12 +6,15 @@ import {
   HttpInterceptor,
   HttpInterceptorFn,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { AuthService } from '../services/security/auth.service';
+import { Router } from '@angular/router';
+import { RestApiException } from 'core/models/rest-api-exception.interface';
 
 @Injectable({ providedIn: 'root' })
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private auth: AuthService) {}
+  auth = inject(AuthService);
+  router = inject(Router);
 
   intercept(
     req: HttpRequest<any>,
@@ -25,7 +28,18 @@ export class AuthInterceptor implements HttpInterceptor {
         setHeaders: { Authorization: `Bearer ${accessToken}` },
       });
     }
-    return next.handle(authReq);
+
+    return next.handle(authReq).pipe(
+      catchError((err) => {
+        const error: RestApiException = err.error;
+        if (error.estado === 401 && error.titulo === 'Token expirado') {
+          this.auth.logout();
+          alert(error.detalle);
+          this.router.navigate(['/login']);
+        }
+        return throwError(() => err);
+      })
+    );
   }
 }
 

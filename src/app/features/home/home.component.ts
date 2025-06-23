@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ContactComponent } from 'components/contact/contact.component';
+import { ContactComponent } from 'shared/components/contact/contact.component';
 
 @Component({
   selector: 'app-home',

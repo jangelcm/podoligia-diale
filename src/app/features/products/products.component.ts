@@ -1,21 +1,22 @@
 import { Component, signal } from '@angular/core';
 import { ProductoService } from '../../core/services/producto.service';
-import { ProductCardComponent } from '../../components/product-card/product-card.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Producto } from '../../core/models/producto';
-import { ModalProductoComponent } from '../../components/modal-producto/modal-producto.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
+import { ModalProductoComponent } from './components/modal-producto/modal-producto.component';
+import { Page } from 'core/models/page';
 
 @Component({
-  selector: 'app-product-list',
+  selector: 'app-product',
   imports: [
-    ProductCardComponent,
     FormsModule,
     CommonModule,
+    ProductCardComponent,
     ModalProductoComponent,
   ],
-  templateUrl: './product-list.component.html',
-  styleUrl: './product-list.component.css',
+  templateUrl: './products.component.html',
+  styleUrl: './products.component.css',
 })
 export class ProductListComponent {
   productos = signal<any[]>([]);
@@ -34,16 +35,19 @@ export class ProductListComponent {
   }
 
   cargarProductos() {
+    //numero de registros a mostrar
+    const size = 9;
+
     this.loading.set(true);
     this.productoService
       .getProductosPaginado(
         this.page(),
-        10,
+        size,
         this.nombre(),
         this.precioMin() ?? undefined,
         this.precioMax() ?? undefined
       )
-      .subscribe((res: any) => {
+      .subscribe((res: Page<Producto>) => {
         this.productos.set(res.content);
         this.totalPages.set(res.totalPages);
         this.loading.set(false);

@@ -80,4 +80,13 @@
             </div>
         </div>
     </div>
+
+    <!-- Paginación -->
+    <div class="flex justify-center items-center gap-4 mt-8" *ngIf="totalPages() > 1">
+        <button (click)="cambiarPagina(-1)" [disabled]="page() === 0"
+            class="px-4 py-2 rounded bg-cyan-600 text-white font-semibold hover:bg-cyan-700 disabled:opacity-50">Anterior</button>
+        <span>Página {{ page() + 1 }} de {{ totalPages() }}</span>
+        <button (click)="cambiarPagina(1)" [disabled]="page() + 1 >= totalPages()"
+            class="px-4 py-2 rounded bg-cyan-600 text-white font-semibold hover:bg-cyan-700 disabled:opacity-50">Siguiente</button>
+    </div>
 </section>

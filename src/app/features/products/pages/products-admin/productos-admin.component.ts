@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Producto } from '../../core/models/producto';
-import { ProductoService } from '../../core/services/producto.service';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Producto } from 'core/models/producto';
+import { ProductoService } from 'core/services/producto.service';
 
 @Component({
   selector: 'app-productos-admin',
@@ -69,7 +69,7 @@ export class ProductosAdminComponent implements OnInit {
   }
 
   editarProducto(producto: Producto) {
-    this.router.navigate(['/productos/editar', producto.id]);
+    this.router.navigate(['productos/admin/editar', producto.id]);
   }
 
   eliminarProducto(producto: Producto) {

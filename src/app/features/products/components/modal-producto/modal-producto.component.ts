@@ -1,8 +1,8 @@
 import { Component, input, Input } from '@angular/core';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 
-import { Producto } from '../../core/models/producto';
-import { CartService } from '../../core/services/cart.service';
+import { Producto } from '../../../../core/models/producto';
+import { CartService } from '../../../../core/services/cart.service';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
