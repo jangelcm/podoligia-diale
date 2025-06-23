@@ -4,7 +4,7 @@ import { map, Observable } from 'rxjs';
 import { Producto } from 'core/models/producto';
 import { PedidoItemRequest } from 'core/models/pedido-item';
 import { Pedido } from 'core/models/pedido';
-import { environment } from '../../../environment/environment/enviornment';
+import { environment } from '../../../environment/environment/environment';
 
 export interface PedidoRequest {
   items: PedidoItemRequest[];

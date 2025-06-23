@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Producto } from '../models/producto';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { environment } from '@app/../../environment/environment/enviornment';
+import { environment } from '../../../environment/environment/environment';
 import { Page } from 'core/models/page';
 
 @Injectable({

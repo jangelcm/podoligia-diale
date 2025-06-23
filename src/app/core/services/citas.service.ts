@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Cita } from 'core/models/cita';
-import { environment } from '../../../environment/environment/enviornment';
+import { environment } from '../../../environment/environment/environment';
 
 @Injectable({ providedIn: 'root' })
 export class CitasService {
