@@ -1,26 +1,27 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Cita } from 'core/models/cita';
+import { environment } from '../../../environment/environment/enviornment';
 
 @Injectable({ providedIn: 'root' })
 export class CitasService {
-  private url = 'http://localhost:8080/api/citas';
+  private apiUrl = `${environment.apiUrl}` + '/api/citas';
 
   constructor(private http: HttpClient) {}
 
   getCitas() {
-    return this.http.get<Cita[]>(this.url);
+    return this.http.get<Cita[]>(this.apiUrl);
   }
 
   getCitasPorFecha(fecha: string) {
-    return this.http.get<Cita[]>(`${this.url}?fecha=${fecha}`);
+    return this.http.get<Cita[]>(`${this.apiUrl}?fecha=${fecha}`);
   }
 
   reservarCita(cita: Cita) {
-    return this.http.post<Cita>(this.url, cita);
+    return this.http.post<Cita>(this.apiUrl, cita);
   }
 
   getCitasPorUsuario(username: string) {
-    return this.http.get<Cita[]>(`${this.url}/usuario/${username}`);
+    return this.http.get<Cita[]>(`${this.apiUrl}/usuario/${username}`);
   }
 }

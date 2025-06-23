@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://backend.com',
+  apiUrl: 'https://diale-api-1.onrender.com',
 };

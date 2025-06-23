@@ -10,7 +10,8 @@ import { Page } from 'core/models/page';
   providedIn: 'root',
 })
 export class ProductoService {
-  url = 'http://localhost:8080/api/productos-magistrales';
+  private apiUrl = `${environment.apiUrl}` + '/api/productos-magistrales';
+
   constructor(private http: HttpClient) {}
 
   getProductosPaginado(
@@ -26,7 +27,7 @@ export class ProductoService {
     if (maxPrecio !== undefined) params = params.set('maxPrecio', maxPrecio);
 
     return this.http
-      .get<Page<Producto>>(`${this.url}/paginado`, {
+      .get<Page<Producto>>(`${this.apiUrl}/paginado`, {
         params,
       })
       .pipe(
@@ -44,11 +45,11 @@ export class ProductoService {
   }
 
   getProductos(): Observable<Producto[]> {
-    return this.http.get<Producto[]>(`${this.url}`);
+    return this.http.get<Producto[]>(`${this.apiUrl}`);
   }
 
   getProducto(id: number): Observable<Producto> {
-    return this.http.get<Producto>(`${this.url}/${id}`).pipe(
+    return this.http.get<Producto>(`${this.apiUrl}/${id}`).pipe(
       map((prod) => ({
         ...prod,
         imagenUrl: prod.imagenUrl
@@ -59,20 +60,20 @@ export class ProductoService {
   }
 
   agregarProducto(producto: Producto) {
-    return this.http.post(`${this.url}`, producto);
+    return this.http.post(`${this.apiUrl}`, producto);
   }
 
   actualizarProducto(id: number, producto: Producto) {
-    return this.http.put(`${this.url}/${id}`, producto);
+    return this.http.put(`${this.apiUrl}/${id}`, producto);
   }
 
   eliminarProducto(id: number) {
-    return this.http.delete(`${this.url}/${id}`);
+    return this.http.delete(`${this.apiUrl}/${id}`);
   }
 
   uploadImagen(file: File) {
     const formData = new FormData();
     formData.append('file', file);
-    return this.http.post<{ url: string }>(`${this.url}/upload`, formData);
+    return this.http.post<{ url: string }>(`${this.apiUrl}/upload`, formData);
   }
 }
