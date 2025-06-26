@@ -99,6 +99,9 @@ export class CitasComponent {
       .subscribe({
         next: (citaActualizada) => {
           this.mensajeEstado = `La cita Nro: ${cita.id} fue actualizada a ${citaActualizada.estado}`;
+          setTimeout(() => {
+            this.mensajeEstado = '';
+          }, 1500);
           this.estadoEditando[cita.id] = false;
           this.citaSeleccionadaId = null;
           this.cargarCitasPaginadas(); // Recargar citas paginadas
