@@ -4,6 +4,7 @@ import {
   FormGroup,
   Validators,
   ReactiveFormsModule,
+  FormsModule,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CitasService } from '../../core/services/citas.service';
@@ -19,6 +20,7 @@ import { Cita } from 'core/models/cita';
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
     CalendarComponent,
     FechaDDMMYYYY,
   ],
@@ -32,12 +34,24 @@ export class CitasComponent {
   horariosDisponibles: { hora: string; disponible: boolean }[] = [];
   diasNoDisponibles: string[] = [];
   citas: Cita[] = [];
-  misCitas: Cita[] = [];
   mensaje: string = '';
   reservando = false;
   form: FormGroup;
   userRole: string = '';
   username: string = '';
+
+  estadoEditando: { [id: number]: boolean } = {};
+  nuevoEstado: { [id: number]: string } = {};
+  citaSeleccionadaId: number | null = null;
+  mensajeEstado: string = '';
+
+  // Filtros para paginado
+  filtroFecha: string = '';
+  filtroEstado: string = '';
+  pagina: number = 0;
+  totalPaginas: number = 1;
+  pageSize: number = 10;
+  citasPaginadas: Cita[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -51,8 +65,7 @@ export class CitasComponent {
       email: ['', [Validators.required, Validators.email]],
     });
     this.generarMeses();
-    this.cargarCitas();
-    this.cargarMisCitas();
+    this.cargarMisCitasUsuario();
     // Autocompletar email si es USER
     if (this.userRole === 'USER') {
       const email = AuthHelper.decodeToken(this.auth.getAccessToken())?.email;
@@ -61,6 +74,41 @@ export class CitasComponent {
         this.form.get('email')?.disable();
       }
     }
+  }
+
+  ngOnInit() {
+    const hoy = new Date();
+    this.filtroFecha = hoy.toISOString().slice(0, 10);
+    if (this.userRole === 'ADMIN') {
+      this.cargarCitasPaginadas();
+    }
+  }
+
+  mostrarSelectEstado(cita: any) {
+    this.estadoEditando[cita.id] = true;
+    this.nuevoEstado[cita.id] = cita.estado;
+  }
+
+  cambiarEstado(idCita: number) {
+    this.citaSeleccionadaId = idCita;
+  }
+
+  ejecutarCambioEstado(cita: any) {
+    this.citasService
+      .actualizarEstadoCita(cita.id, this.nuevoEstado[cita.id])
+      .subscribe({
+        next: (citaActualizada) => {
+          this.mensajeEstado = `La cita Nro: ${cita.id} fue actualizada a ${citaActualizada.estado}`;
+          this.estadoEditando[cita.id] = false;
+          this.citaSeleccionadaId = null;
+          this.cargarCitasPaginadas(); // Recargar citas paginadas
+          // Actualiza la lista de citas si es necesario
+        },
+        error: (err) => {
+          this.mensajeEstado = 'Error al actualizar el estado';
+          this.citaSeleccionadaId = null;
+        },
+      });
   }
 
   generarMeses() {
@@ -95,30 +143,54 @@ export class CitasComponent {
     }
   }
 
-  cargarCitas() {
-    if (this.userRole === 'ADMIN') {
-      this.citasService.getCitas().subscribe((citas: Cita[]) => {
-        this.citas = citas;
-        this.misCitas = citas;
-        this.marcarDiasNoDisponibles();
-      });
-    } else if (this.username) {
+  cargarMisCitasUsuario() {
+    console.log('Cargando citas para el usuario:', this.userRole);
+    if (this.userRole === 'USER') {
       this.citasService
         .getCitasPorUsuario(this.username)
         .subscribe((citas: Cita[]) => {
           this.citas = citas;
-          this.misCitas = citas;
           this.marcarDiasNoDisponibles();
         });
     } else {
       this.citas = [];
-      this.misCitas = [];
       this.marcarDiasNoDisponibles();
     }
   }
 
-  cargarMisCitas() {
-    // Ya se maneja en cargarCitas
+  cargarCitasPaginadas() {
+    this.citasService
+      .getCitasPaginadas(
+        this.pagina,
+        this.pageSize,
+        this.filtroFecha,
+        this.filtroEstado
+      )
+      .subscribe((res) => {
+        this.citasPaginadas = res.content || [];
+        this.totalPaginas = res.totalPages || 1;
+      });
+  }
+
+  onFiltroFechaChange(fecha: Event) {
+    const fechaTarget = fecha.target as HTMLInputElement;
+    this.filtroFecha = fechaTarget.value;
+    this.pagina = 0;
+    this.cargarCitasPaginadas();
+  }
+
+  onFiltroEstadoChange(estado: string) {
+    this.filtroEstado = estado;
+    this.pagina = 0;
+    this.cargarCitasPaginadas();
+  }
+
+  cambiarPagina(delta: number) {
+    const nuevaPagina = this.pagina + delta;
+    if (nuevaPagina >= 0 && nuevaPagina < this.totalPaginas) {
+      this.pagina = nuevaPagina;
+      this.cargarCitasPaginadas();
+    }
   }
 
   marcarDiasNoDisponibles() {
@@ -174,17 +246,18 @@ export class CitasComponent {
     if (this.form.invalid || !this.selectedDate || !this.horaSeleccionada)
       return;
     this.reservando = true;
-    const cita: Cita = {
+    const cita = new Cita({
       nombre: this.form.value.nombre,
       email: this.form.get('email')?.value,
       fecha: this.selectedDate,
       hora: this.horaSeleccionada,
       username: this.username || undefined,
-    };
+    });
+
     this.citasService.reservarCita(cita).subscribe({
       next: (res) => {
         this.mensaje = '¡Cita reservada exitosamente!';
-        this.cargarCitas();
+        this.cargarMisCitasUsuario();
         this.form.reset();
 
         setTimeout(() => {

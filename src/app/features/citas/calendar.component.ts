@@ -54,7 +54,7 @@ import { Cita } from 'core/models/cita';
       </div>
       <ng-container *ngFor="let mes of mesesMostrados">
         <div
-          class="bg-white dark:bg-gray-900 rounded-xl shadow p-4 w-full md:w-80"
+          class="bg-white dark:bg-gray-900 rounded-xl flex flex-col gap-2 border border-cyan-100 dark:border-cyan-800 shadow p-4 w-full md:w-80"
         >
           <div
             *ngIf="mesesMostrados.length !== 1"

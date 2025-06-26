@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './shared/components/header/header.component';
+import { ToastComponent } from './shared/components/toast/toast.component';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
     ReactiveFormsModule,
     CommonModule,
     HeaderComponent,
-    // FooterComponent,
+    ToastComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

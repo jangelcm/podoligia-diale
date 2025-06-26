@@ -42,7 +42,7 @@
     <!-- Productos -->
     <div *ngIf="loading()" class="text-center py-8">Cargando productos...</div>
     <div *ngIf="!loading() && productos().length === 0" class="text-center py-8 text-gray-500">
-        No se encontraron productos con los filtros seleccionados.
+        No se encontraron productos.
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         <app-product-card *ngFor="let producto of productos()" [producto]="producto"

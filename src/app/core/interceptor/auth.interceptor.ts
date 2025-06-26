@@ -10,12 +10,13 @@ import { catchError, Observable, throwError } from 'rxjs';
 import { AuthService } from '../services/security/auth.service';
 import { Router } from '@angular/router';
 import { RestApiException } from 'core/models/rest-api-exception.interface';
+import { ToastService } from 'core/services/general/toast.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthInterceptor implements HttpInterceptor {
   auth = inject(AuthService);
   router = inject(Router);
-
+  toast = inject(ToastService);
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
@@ -32,10 +33,16 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(authReq).pipe(
       catchError((err) => {
         const error: RestApiException = err.error;
-        if (error.estado === 401 && error.titulo === 'Token expirado') {
-          this.auth.logout();
-          alert(error.detalle);
-          this.router.navigate(['/login']);
+        if (
+          error.estado === 401 &&
+          (error.titulo === 'Token expirado' ||
+            error.titulo === 'No autorizado')
+        ) {
+          this.toast.show(error.detalle);
+          setTimeout(() => {
+            this.auth.logout();
+            this.router.navigate(['/login']);
+          }, 3000);
         }
         return throwError(() => err);
       })
