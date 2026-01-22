@@ -7,14 +7,13 @@
             <!-- Imagen de fondo difuminada solo en móviles -->
             <div class="absolute inset-0 md:hidden rounded-xl overflow-hidden -mx-4 -my-4">
                 <div class="absolute inset-0 bg-gradient-to-b from-white/75 via-white/70 to-white/80 dark:from-gray-900/75 dark:via-gray-900/70 dark:to-gray-900/80 z-10"></div>
-                <img src="home/landing-pie.jpg" alt="Podología en acción"
-                    class="w-full h-full object-cover blur-[2px] opacity-100" />
+                <img src="home/landing-pie.jpg" alt="Tratamiento profesional de podología en Clínica Diale - Especialistas en cuidado del pie en Lima"
+                    class="w-full h-full object-cover blur-[2px] opacity-100" loading="eager" />
             </div>
 
             <div class="animate-fadeInDown relative z-20">
 
-                <h1 class="text-3xl md:text-4xl font-bold text-cyan-700 dark:text-cyan-300 mb-4">Bienvenido a Clínica
-                    Diale
+                <h1 class="text-3xl md:text-4xl font-bold text-cyan-700 dark:text-cyan-300 mb-4">Clínica Diale - Podología Profesional en Lima
                 </h1>
                 <p class="text-lg text-gray-900 dark:text-gray-100 mb-4 font-medium">
                     En nuestro consultorio, contarás con una profesional altamente capacitada y con experiencia en el
@@ -28,10 +27,12 @@
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 mb-6">
                     <a routerLink="/productos/list"
+                        aria-label="Ver catálogo de productos de podología y cuidado del pie"
                         class="inline-block text-center px-6 py-3 rounded-lg bg-cyan-600 text-white font-semibold shadow hover:bg-cyan-700 transition">
                         Ver productos de podología
                     </a>
                     <a routerLink="/citas"
+                        aria-label="Reservar cita de podología en Clínica Diale"
                         class="inline-block text-center px-6 py-3 rounded-lg border border-cyan-600 text-cyan-700 dark:text-cyan-200 font-semibold hover:bg-cyan-50 dark:hover:bg-cyan-900 transition">
                         Reservar cita de podología
                     </a>
@@ -40,15 +41,15 @@
 
         </div>
          <div class="flex-1 flex justify-center hidden md:flex">
-            <img src="home/landing-pie.jpg" alt="Podología en acción"
-                class="rounded-xl shadow-lg w-full max-w-md object-cover bg-gray-100 dark:bg-gray-800 animate-fadeInDown" />
+            <img src="home/landing-pie.jpg" alt="Especialista en podología realizando tratamiento profesional del pie en Clínica Diale Lima"
+                class="rounded-xl shadow-lg w-full max-w-md object-cover bg-gray-100 dark:bg-gray-800 animate-fadeInDown" loading="eager" width="400" height="300" />
         </div>
     </div>
     <!-- Sección de confianza -->
-    <div class="mt-12 max-w-6xl w-full mx-auto flex flex-col md:flex-row items-center gap-8 animate-fadeInDown">
+    <article class="mt-12 max-w-6xl w-full mx-auto flex flex-col md:flex-row items-center gap-8 animate-fadeInDown">
          <div class="flex-1 flex justify-center">
-            <img src="home/laser.jpg" alt="Podóloga atendiendo paciente"
-                class="rounded-xl shadow-lg w-full max-w-md object-cover bg-gray-100 dark:bg-gray-800 animate-fadeInDown" />
+            <img src="home/laser.jpg" alt="Tratamiento con láser podológico para hongos en uñas - Clínica Diale"
+                class="rounded-xl shadow-lg w-full max-w-md object-cover bg-gray-100 dark:bg-gray-800 animate-fadeInDown" loading="lazy" width="400" height="300" />
         </div>
         <div class="flex-1 flex flex-col md:items-start">
             <div class="justify-center md:justify-start animate-fadeInDown">
@@ -109,9 +110,9 @@
                 </ul>
             </div>
         </div>   
-    </div>
+    </article>
     <!-- Sección de Por qué elegirnos -->
-    <div class="mt-12 max-w-6xl w-full mx-auto animate-fadeInDown gap-8">
+    <article class="mt-12 max-w-6xl w-full mx-auto animate-fadeInDown gap-8">
          <div>
              <h2 class="text-2xl font-semibold text-cyan-700 dark:text-cyan-300 mb-2">¿Por qué elegirnos?</h2>
             <p class="text-lg text-gray-700 dark:text-gray-200 mb-2">
@@ -122,10 +123,10 @@
                 ¡Estamos ansiosos por conocerte y ayudarte a tener pies sanos y felices!
             </p>
         </div>
-    </div>
+    </article>
 
     <!-- Sección de Casos Reales -->
-    <div class="max-w-full mt-16 bg-gradient-to-br from-purple-50 via-purple-100/50 to-pink-50 dark:from-purple-100/20 dark:via-purple-800/10  py-12">
+    <article class="max-w-full mt-16 bg-gradient-to-br from-purple-50 via-purple-100/50 to-pink-50 dark:from-purple-900/20 dark:via-purple-800/10 dark:to-pink-900/20 py-12">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12 animate-fadeInDown">
                 <h2 class="text-4xl md:text-5xl font-bold text-cyan-700 dark:text-cyan-300 mb-4">
@@ -142,18 +143,18 @@
                 class="animate-fadeInDown">
             </app-carousel>
         </div>
-    </div>
+    </article>
 
     <!-- Sección de Preguntas Frecuentes -->
-    <div class="mt-12 max-w-6xl w-full mx-auto animate-fadeInDown">
+    <article class="mt-12 max-w-6xl w-full mx-auto animate-fadeInDown" itemscope itemtype="https://schema.org/FAQPage">
         <h2 class="text-3xl font-bold text-cyan-700 dark:text-cyan-300 mb-8 text-center mt-12">Preguntas Frecuentes</h2>
         <div class="space-y-4">
             <!-- Pregunta 1: Más sedes -->
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                 <button 
                     (click)="toggleFaq(0)"
                     class="w-full px-6 py-4 flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                    <h3 class="text-xl font-semibold text-cyan-600 dark:text-cyan-400 text-left">
+                    <h3 class="text-xl font-semibold text-cyan-600 dark:text-cyan-400 text-left" itemprop="name">
                         ¿Tienen más sedes?
                     </h3>
                     <svg 
@@ -167,8 +168,8 @@
                 </button>
                 <div 
                     *ngIf="faqExpanded[0]"
-                    class="px-6 pb-4 pt-2 border-t border-gray-200 dark:border-gray-700 animate-fadeInDown">
-                    <p class="text-gray-700 dark:text-gray-200">
+                    class="px-6 pb-4 pt-2 border-t border-gray-200 dark:border-gray-700 animate-fadeInDown" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                    <p class="text-gray-700 dark:text-gray-200" itemprop="text">
                         Actualmente contamos con una sola sede ubicada en: <strong>Calle Los Lirios Mz H Lt. 18 - San Juan de Miraflores (SJM)</strong>. 
                         Para mayor información, contáctanos por WhatsApp.
                     </p>
@@ -176,11 +177,11 @@
             </div>
 
             <!-- Pregunta 2: Atención a domicilio -->
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                 <button 
                     (click)="toggleFaq(1)"
                     class="w-full px-6 py-4 flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                    <h3 class="text-xl font-semibold text-cyan-600 dark:text-cyan-400 text-left">
+                    <h3 class="text-xl font-semibold text-cyan-600 dark:text-cyan-400 text-left" itemprop="name">
                         ¿Brindan atención a domicilio?
                     </h3>
                     <svg 
@@ -194,8 +195,8 @@
                 </button>
                 <div 
                     *ngIf="faqExpanded[1]"
-                    class="px-6 pb-4 pt-2 border-t border-gray-200 dark:border-gray-700 animate-fadeInDown">
-                    <p class="text-gray-700 dark:text-gray-200">
+                    class="px-6 pb-4 pt-2 border-t border-gray-200 dark:border-gray-700 animate-fadeInDown" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                    <p class="text-gray-700 dark:text-gray-200" itemprop="text">
                         Sí, ofrecemos servicio de podología a domicilio para tu mayor comodidad. Este servicio incluye un cobro adicional 
                         que cubre los gastos de traslado y el transporte del equipamiento necesario para brindarte una atención de calidad 
                         en la comodidad de tu hogar.
@@ -204,11 +205,11 @@
             </div>
 
             <!-- Pregunta 3: Medios de pago -->
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                 <button 
                     (click)="toggleFaq(2)"
                     class="w-full px-6 py-4 flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                    <h3 class="text-xl font-semibold text-cyan-600 dark:text-cyan-400 text-left">
+                    <h3 class="text-xl font-semibold text-cyan-600 dark:text-cyan-400 text-left" itemprop="name">
                         ¿Qué medios de pago aceptan?
                     </h3>
                     <svg 
@@ -222,8 +223,8 @@
                 </button>
                 <div 
                     *ngIf="faqExpanded[2]"
-                    class="px-6 pb-4 pt-2 border-t border-gray-200 dark:border-gray-700 animate-fadeInDown">
-                    <p class="text-gray-700 dark:text-gray-200 mb-2">
+                    class="px-6 pb-4 pt-2 border-t border-gray-200 dark:border-gray-700 animate-fadeInDown" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                    <p class="text-gray-700 dark:text-gray-200 mb-2" itemprop="text">
                         Aceptamos diversos medios de pago para tu conveniencia:
                     </p>
                     <ul class="list-disc pl-5 text-gray-700 dark:text-gray-200 space-y-1">
@@ -237,11 +238,11 @@
             </div>
 
             <!-- Pregunta 4: Pie diabético -->
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                 <button 
                     (click)="toggleFaq(3)"
                     class="w-full px-6 py-4 flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                    <h3 class="text-xl font-semibold text-cyan-600 dark:text-cyan-400 text-left">
+                    <h3 class="text-xl font-semibold text-cyan-600 dark:text-cyan-400 text-left" itemprop="name">
                         ¿Atienden pie diabético?
                     </h3>
                     <svg 
@@ -255,8 +256,8 @@
                 </button>
                 <div 
                     *ngIf="faqExpanded[3]"
-                    class="px-6 pb-4 pt-2 border-t border-gray-200 dark:border-gray-700 animate-fadeInDown">
-                    <p class="text-gray-700 dark:text-gray-200">
+                    class="px-6 pb-4 pt-2 border-t border-gray-200 dark:border-gray-700 animate-fadeInDown" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                    <p class="text-gray-700 dark:text-gray-200" itemprop="text">
                         Sí, contamos con atención especializada para el tratamiento y cuidado del pie diabético. Nuestros servicios incluyen 
                         evaluación completa, tratamiento preventivo y curativo de úlceras, corte de uñas especializado, y asesoramiento 
                         sobre el cuidado diario. Es fundamental mantener un control regular para prevenir complicaciones, por lo que 
@@ -265,7 +266,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </article>
 
     <app-contact class="max-w-6xl w-full mx-auto mt-12"></app-contact>
 
