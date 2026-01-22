@@ -11,7 +11,7 @@ import {
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css'], // Puedes usar Tailwind directamente
+  styleUrls: ['./contact.component.css'], 
   imports: [FormsModule, ReactiveFormsModule, CommonModule],
 })
 export class ContactComponent {

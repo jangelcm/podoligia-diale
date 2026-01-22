@@ -4,10 +4,11 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/services/security/auth.service';
 import { AuthHelper } from 'core/helpers/auth.helper';
 import { CartService } from 'core/services/cart.service';
+import { ClickOutsideDirective } from 'shared/directives/click-outside.directive';
 
 @Component({
   selector: 'app-header',
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, ClickOutsideDirective],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
@@ -24,6 +25,17 @@ export class HeaderComponent {
     effect(() => {
       this.cartCount.set(this.cartService.getCart().length);
     });
+  }
+
+  onBlur() {
+    console.log('onBlur');
+    setTimeout(() => {
+      this.userMenuOpen = false;
+    }, 200);
+  }
+
+  onBlurPanelMenu() {
+    this.menuOpen = false;
   }
 
   toggleDarkMode() {

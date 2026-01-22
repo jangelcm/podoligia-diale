@@ -46,7 +46,7 @@ export class LoginComponent {
         [
           Validators.required,
           Validators.minLength(6),
-          Validators.maxLength(20),
+          Validators.maxLength(100),
         ],
       ],
       email: ['', []], // Se activa solo en registro

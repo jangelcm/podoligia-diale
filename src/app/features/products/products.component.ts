@@ -29,6 +29,25 @@ export class ProductListComponent {
   loading = signal(false);
   modalAbierto = signal(false);
   productoSeleccionado = signal<Producto | null>(null);
+  opcionSeleccionada = signal<number | null>(null);
+
+  opcionesMinimas = [
+    { value: null, label: 'Precio mínimo' },
+    { value: 10, label: '> S/10' },
+    { value: 30, label: '> S/30' },
+    { value: 50, label: '> S/50' },
+    { value: 100, label: '> S/100' },
+    { value: 200, label: '> S/200' },
+  ];
+
+  opcionesMaximas = [
+    { value: null, label: 'Precio máximo' },
+    { value: 10, label: '< S/10' },
+    { value: 30, label: '< S/30' },
+    { value: 50, label: '< S/50' },
+    { value: 100, label: '< S/100' },
+    { value: 200, label: '< S/200' },
+  ];
 
   constructor(private productoService: ProductoService) {
     this.cargarProductos();

@@ -26,12 +26,16 @@ export class ModalProductoComponent {
     if (this.close) this.close();
   }
 
+  isStockInsufficient(): boolean {
+    if (!this.product()) return true;
+    return (
+      this.product().stock !== undefined &&
+      this.cantidad > this.product().stock!
+    );
+  }
+
   addToCart() {
-    if (
-      this.product &&
-      this.product().stock &&
-      this.cantidad > (this.product()?.stock || 0)
-    ) {
+    if (this.isStockInsufficient()) {
       this.mensaje = 'No hay suficiente stock disponible.';
       return;
     }
@@ -59,10 +63,10 @@ export class ModalProductoComponent {
 
   goToCart() {
     this.addToCart();
-    // Aquí podrías navegar al carrito si tienes router, o cerrar el modal y notificar al padre
-    // Por ejemplo: this.router.navigate(['/carrito']);
-    // O simplemente cerrar el modal:
-    this.closeDialog();
-    this.router.navigate(['/carrito']);
+
+    if (!this.isStockInsufficient()) {
+      this.closeDialog();
+      this.router.navigate(['/carrito']);
+    }
   }
 }
