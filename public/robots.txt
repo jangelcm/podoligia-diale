@@ -1,0 +1,10 @@
+# robots.txt para Clínica Diale
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://podology-diale.netlify.app/sitemap.xml
+
+# Bloquear recursos innecesarios
+Disallow: /assets/
+Disallow: /*.json$

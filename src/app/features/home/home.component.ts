@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
     this.meta.updateTag({ property: 'og:title', content: 'Clínica Diale - Podología Especializada en Lima' });
     this.meta.updateTag({ property: 'og:description', content: 'Especialistas en cuidado del pie. Tratamiento de pie diabético, uñas encarnadas, callos. Atención a domicilio en Lima. ¡Agenda tu cita!' });
     this.meta.updateTag({ property: 'og:type', content: 'website' });
-    this.meta.updateTag({ property: 'og:url', content: 'https://www.clinicadiale.com/' });
+    this.meta.updateTag({ property: 'og:url', content: 'https://podology-diale.netlify.app/' });
   }
 
   private addStructuredData(): void {
@@ -52,10 +52,10 @@ export class HomeComponent implements OnInit {
         '@graph': [
           {
             '@type': 'MedicalBusiness',
-            '@id': 'https://www.clinicadiale.com/#medicalbusiness',
+            '@id': 'https://podology-diale.netlify.app/#medicalbusiness',
             name: 'Clínica Diale',
-            image: 'https://www.clinicadiale.com/home/landing-pie.jpg',
-            url: 'https://www.clinicadiale.com/',
+            image: 'https://podology-diale.netlify.app/home/landing-pie.jpg',
+            url: 'https://podology-diale.netlify.app/',
             telephone: '+51916541671',
             email: 'angui.bamc@gmail.com',
             priceRange: '$$',
@@ -87,10 +87,10 @@ export class HomeComponent implements OnInit {
           },
           {
             '@type': 'Service',
-            '@id': 'https://www.clinicadiale.com/#service',
+            '@id': 'https://podology-diale.netlify.app/#service',
             serviceType: 'Podología',
             provider: {
-              '@id': 'https://www.clinicadiale.com/#medicalbusiness'
+              '@id': 'https://podology-diale.netlify.app/#medicalbusiness'
             },
             areaServed: {
               '@type': 'City',
