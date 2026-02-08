@@ -1,146 +1,185 @@
 <section
     class="landing-page bg-gradient-to-b dark:from-gray-900 dark:to-gray-800 min-h-screen flex flex-col justify-start px-4 py-8">
 
-    <div class="max-w-6xl w-full mx-auto flex flex-col-reverse md:flex-row md:items-start gap-8">
+    <div class="max-w-6xl w-full mx-auto flex flex-col md:flex-row md:items-start gap-8">
         <!-- Texto principal -->
         <div class="flex-1 relative">
             <!-- Imagen de fondo difuminada solo en móviles -->
             <div class="absolute inset-0 md:hidden rounded-xl overflow-hidden -mx-4 -my-4">
-                <div class="absolute inset-0 bg-gradient-to-b from-white/75 via-white/70 to-white/80 dark:from-gray-900/75 dark:via-gray-900/70 dark:to-gray-900/80 z-10"></div>
-                <img src="home/landing-pie.jpg" alt="Tratamiento profesional de podología en Clínica Diale - Especialistas en cuidado del pie en Lima"
+                <div
+                    class="absolute inset-0 bg-gradient-to-b from-white/75 via-white/70 to-white/80 dark:from-gray-900/75 dark:via-gray-900/70 dark:to-gray-900/80 z-10">
+                </div>
+                <img src="home/landing-pie.jpg"
+                    alt="Tratamiento profesional de podología en Clínica Diale - Especialistas en cuidado del pie en Lima"
                     class="w-full h-full object-cover blur-[2px] opacity-100" loading="eager" />
             </div>
 
             <div class="animate-fadeInDown relative z-20">
 
-                <h1 class="text-3xl md:text-4xl font-bold text-cyan-700 dark:text-cyan-300 mb-4">Clínica Diale - Podología Profesional en Lima
+                <!-- <h1 class="text-3xl md:text-4xl font-bold text-cyan-700 dark:text-cyan-300 mb-4">Clínica Diale -
+                    Podología Profesional en Lima
+                </h1> -->
+                <h1 class="text-3xl md:text-5xl font-bold text-cyan-700 dark:text-cyan-300 mb-4">
+                    🦶 ¡Dile ADIÓS al dolor de pies! Recupera tu bienestar HOY
                 </h1>
-                <p class="text-lg text-gray-900 dark:text-gray-100 mb-4 font-medium">
-                    En nuestro consultorio, contarás con una profesional altamente capacitada y con experiencia en el
-                    tratamiento de diversas afecciones del pie, desde problemas de uñas y callos hasta dolencias más
-                    complejas como la fascitis plantar o la neuropatía diabética.
+                <p class="text-lg text-gray-900 dark:text-gray-100 mb-2 font-medium">
+
+                    ¿Sufres de fascitis plantar o pie diabético? ¡Tenemos la solución profesional que necesitas!
                 </p>
-                <p class="text-lg text-gray-800 dark:text-gray-200 mb-6">
-                    Nuestro objetivo es brindarte un servicio personalizado y de alta calidad, asegurándonos de que te
-                    sientas cómodo y relajado durante tu visita. Ofrecemos una variedad de tratamientos y servicios.
-                    ¡Reserva tu cita hoy mismo y empieza a cuidar tus pies con nosotros!
+
+                <button (click)="toggleShowMore()"
+                    class="text-cyan-600 dark:text-cyan-400 font-semibold hover:text-cyan-700 dark:hover:text-cyan-300 transition mb-4 flex items-center gap-2">
+                    <span>{{ showMore ? 'Ver menos' : 'Ver más' }}</span>
+                    <svg class="w-5 h-5 transition-transform duration-300" [class.rotate-180]="showMore" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+
+                <p *ngIf="showMore" class="text-lg text-gray-800 dark:text-gray-200 mb-6 animate-fadeInDown">
+                    ✨ <strong>+5 años transformando vidas</strong> con tratamientos especializados. Eliminamos
+                    <strong>callos, uñas encarnadas, hongos y dolor crónico</strong> en pies.
+                    💯 <strong>Resultados GARANTIZADOS desde la primera sesión.</strong> Atención a domicilio o en
+                    consultorio con equipos de última generación.
+                    🎯 <strong>¡CUPOS LIMITADOS!</strong> Únete a los cientos de pacientes que ya caminan sin dolor.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 mb-6">
+                    <a routerLink="/citas" aria-label="Reservar cita de podología en Clínica Diale"
+                        class="inline-block text-center px-6 py-3 rounded-lg bg-cyan-600 text-white font-semibold shadow hover:bg-cyan-700 transition text-base md:text-lg">
+                        🚀 RESERVA TU CITA AHORA - 20% OFF
+                    </a>
                     <a routerLink="/productos/list"
                         aria-label="Ver catálogo de productos de podología y cuidado del pie"
-                        class="inline-block text-center px-6 py-3 rounded-lg bg-cyan-600 text-white font-semibold shadow hover:bg-cyan-700 transition">
-                        Ver productos de podología
-                    </a>
-                    <a routerLink="/citas"
-                        aria-label="Reservar cita de podología en Clínica Diale"
-                        class="inline-block text-center px-6 py-3 rounded-lg border border-cyan-600 text-cyan-700 dark:text-cyan-200 font-semibold hover:bg-cyan-50 dark:hover:bg-cyan-900 transition">
-                        Reservar cita de podología
+                        class="inline-block text-center px-6 py-3 rounded-lg border-2 border-cyan-600 text-cyan-700 dark:text-cyan-200 font-semibold hover:bg-cyan-50 dark:hover:bg-cyan-900 transition">
+                        🛒 Ver Productos Especializados
                     </a>
                 </div>
             </div>
 
         </div>
-         <div class="flex-1 flex justify-center hidden md:flex">
-            <img src="home/landing-pie.jpg" alt="Especialista en podología realizando tratamiento profesional del pie en Clínica Diale Lima"
-                class="rounded-xl shadow-lg w-full max-w-md object-cover bg-gray-100 dark:bg-gray-800 animate-fadeInDown" loading="eager" width="400" height="300" />
+        <div class="flex-1 flex justify-center md:flex">
+            <img src="home/portada.jpeg"
+                alt="Especialista en podología realizando tratamiento profesional del pie en Clínica Diale Lima"
+                class="rounded-xl shadow-lg w-full max-w-md object-cover bg-gray-100 dark:bg-gray-800 animate-fadeInDown"
+                loading="eager" width="400" height="300" />
         </div>
     </div>
     <!-- Sección de confianza -->
     <article class="mt-12 max-w-6xl w-full mx-auto flex flex-col md:flex-row items-center gap-8 animate-fadeInDown">
-         <div class="flex-1 flex justify-center">
+        <div class="flex-1 flex justify-center">
             <img src="home/laser.jpg" alt="Tratamiento con láser podológico para hongos en uñas - Clínica Diale"
-                class="rounded-xl shadow-lg w-full max-w-md object-cover bg-gray-100 dark:bg-gray-800 animate-fadeInDown" loading="lazy" width="400" height="300" />
+                class="rounded-xl shadow-lg w-full max-w-md object-cover bg-gray-100 dark:bg-gray-800 animate-fadeInDown"
+                loading="lazy" width="400" height="300" />
         </div>
         <div class="flex-1 flex flex-col md:items-start">
             <div class="justify-center md:justify-start animate-fadeInDown">
-                <h2 class="text-2xl font-semibold text-cyan-700 dark:text-cyan-300 mb-2">
-                    Servicios que ofrecemos</h2>
-                
+                <h2 class="text-2xl md:text-3xl font-bold text-cyan-700 dark:text-cyan-300 mb-2">
+                    💎 TRATAMIENTOS QUE TRANSFORMAN</h2>
+
                 <!-- Estrellas de calificación -->
                 <div class="flex gap-1 mb-4">
                     <svg class="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 24 24">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        <path
+                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                     </svg>
                     <svg class="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 24 24">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        <path
+                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                     </svg>
                     <svg class="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 24 24">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        <path
+                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                     </svg>
                     <svg class="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 24 24">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        <path
+                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                     </svg>
                     <svg class="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 24 24">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        <path
+                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                     </svg>
                 </div>
 
                 <!-- Lista con iconos de check modernos -->
                 <ul class="text-lg text-start text-gray-700 dark:text-gray-200 space-y-3">
                     <li class="flex items-start gap-3">
-                        <svg class="w-6 h-6 text-cyan-600 dark:text-cyan-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                        <svg class="w-6 h-6 text-cyan-600 dark:text-cyan-400 flex-shrink-0 mt-0.5" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                d="M5 13l4 4L19 7" />
                         </svg>
-                        <span>Servicio de podología a domicilio</span>
+                        <span><strong>🏠 Atención a Domicilio:</strong> Comodidad total sin salir de casa</span>
                     </li>
                     <li class="flex items-start gap-3">
-                        <svg class="w-6 h-6 text-cyan-600 dark:text-cyan-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                        <svg class="w-6 h-6 text-cyan-600 dark:text-cyan-400 flex-shrink-0 mt-0.5" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                d="M5 13l4 4L19 7" />
                         </svg>
-                        <span>Tratamientos para uñas encarnadas y callos</span>
+                        <span><strong>💅 Uñas Encarnadas & Callos:</strong> Alivio inmediato garantizado</span>
                     </li>
                     <li class="flex items-start gap-3">
-                        <svg class="w-6 h-6 text-cyan-600 dark:text-cyan-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                        <svg class="w-6 h-6 text-cyan-600 dark:text-cyan-400 flex-shrink-0 mt-0.5" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                d="M5 13l4 4L19 7" />
                         </svg>
-                        <span>Terapias para el dolor de pie y la inflamación</span>
+                        <span><strong>⚡ Tratamiento Láser Avanzado:</strong> Elimina hongos sin dolor</span>
                     </li>
                     <li class="flex items-start gap-3">
-                        <svg class="w-6 h-6 text-cyan-600 dark:text-cyan-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                        <svg class="w-6 h-6 text-cyan-600 dark:text-cyan-400 flex-shrink-0 mt-0.5" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                d="M5 13l4 4L19 7" />
                         </svg>
-                        <span>Asesoramiento sobre el cuidado y la higiene del pie</span>
+                        <span><strong>🩺 Pie Diabético:</strong> Prevención y cuidado especializado</span>
                     </li>
                     <li class="flex items-start gap-3">
-                        <svg class="w-6 h-6 text-cyan-600 dark:text-cyan-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                        <svg class="w-6 h-6 text-cyan-600 dark:text-cyan-400 flex-shrink-0 mt-0.5" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                d="M5 13l4 4L19 7" />
                         </svg>
-                        <span>Venta de productos para el cuidado del pie</span>
+                        <span><strong>🎁 Productos Premium:</strong> Lo mejor para el cuidado diario</span>
                     </li>
                 </ul>
             </div>
-        </div>   
+        </div>
     </article>
     <!-- Sección de Por qué elegirnos -->
-    <article class="mt-12 max-w-6xl w-full mx-auto animate-fadeInDown gap-8">
-         <div>
-             <h2 class="text-2xl font-semibold text-cyan-700 dark:text-cyan-300 mb-2">¿Por qué elegirnos?</h2>
-            <p class="text-lg text-gray-700 dark:text-gray-200 mb-2">
-                Atención profesional, personalizada y con calidez humana. Nos especializamos en el bienestar de tus
-                pies, usando productos de alta calidad y técnicas modernas.
+    <article
+        class="mt-12 max-w-6xl w-full mx-auto animate-fadeInDown gap-8 bg-gradient-to-r from-cyan-50 to-blue-50 dark:from-cyan-900/20 dark:to-blue-900/20 p-6 md:p-8 rounded-2xl shadow-lg">
+        <div>
+            <h2 class="text-2xl md:text-3xl font-bold text-cyan-700 dark:text-cyan-300 mb-4">🏆 ¿Por qué miles de
+                personas confían en nosotros?</h2>
+            <p class="text-lg text-gray-700 dark:text-gray-200 mb-3 font-semibold">
+                ✅ <strong>+500 Pacientes Satisfechos</strong> que han recuperado su calidad de vida<br>
+                ✅ <strong>Equipos de Última Generación:</strong> Tecnología láser y tratamientos innovadores<br>
+                ✅ <strong>Profesionales Certificados:</strong> Experiencia y trato humano garantizado<br>
+                ✅ <strong>Resultados REALES desde la 1ra Sesión</strong> - ¡Compruébalo tú mismo!
             </p>
-            <p class="text-lg text-gray-600 dark:text-gray-300">
-                ¡Estamos ansiosos por conocerte y ayudarte a tener pies sanos y felices!
+            <p class="text-xl text-cyan-700 dark:text-cyan-300 font-bold mt-4">
+                🎯 ¡No esperes más! Tus pies merecen el MEJOR cuidado profesional.
             </p>
         </div>
     </article>
 
     <!-- Sección de Casos Reales -->
-    <article class="max-w-full mt-16 bg-gradient-to-br from-purple-50 via-purple-100/50 to-pink-50 dark:from-purple-900/20 dark:via-purple-800/10 dark:to-pink-900/20 py-12">
+    <article
+        class="max-w-full mt-16 bg-gradient-to-br from-purple-50 via-purple-100/50 to-pink-50 dark:from-purple-900/20 dark:via-purple-800/10 dark:to-pink-900/20 py-12">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12 animate-fadeInDown">
                 <h2 class="text-4xl md:text-5xl font-bold text-cyan-700 dark:text-cyan-300 mb-4">
-                    Casos Reales
+                    ⭐ Transformaciones REALES que hablan por sí solas
                 </h2>
-                <p class="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
-                    Resultados comprobados de nuestros tratamientos especializados en podología.
+                <p class="text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto font-semibold">
+                    📸 <strong>Antes y Después:</strong> Resultados verificables de pacientes reales que recuperaron su
+                    bienestar.
+                    <span class="block mt-2 text-cyan-600 dark:text-cyan-400">¡El próximo testimonio podría ser el
+                        tuyo!</span>
                 </p>
             </div>
-            <app-carousel 
-                [items]="casosReales" 
-                [autoPlay]="true"
-                [interval]="5000"
-                class="animate-fadeInDown">
+            <app-carousel [items]="casosReales" [autoPlay]="true" [interval]="5000" class="animate-fadeInDown">
             </app-carousel>
         </div>
     </article>
@@ -150,80 +189,71 @@
         <h2 class="text-3xl font-bold text-cyan-700 dark:text-cyan-300 mb-8 text-center mt-12">Preguntas Frecuentes</h2>
         <div class="space-y-4">
             <!-- Pregunta 1: Más sedes -->
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <button 
-                    (click)="toggleFaq(0)"
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden" itemscope itemprop="mainEntity"
+                itemtype="https://schema.org/Question">
+                <button (click)="toggleFaq(0)"
                     class="w-full px-6 py-4 flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
                     <h3 class="text-xl font-semibold text-cyan-600 dark:text-cyan-400 text-left" itemprop="name">
                         ¿Tienen más sedes?
                     </h3>
-                    <svg 
-                        class="w-6 h-6 text-cyan-600 dark:text-cyan-400 transition-transform duration-300"
-                        [class.rotate-180]="faqExpanded[0]"
-                        fill="none" 
-                        stroke="currentColor" 
-                        viewBox="0 0 24 24">
+                    <svg class="w-6 h-6 text-cyan-600 dark:text-cyan-400 transition-transform duration-300"
+                        [class.rotate-180]="faqExpanded[0]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                 </button>
-                <div 
-                    *ngIf="faqExpanded[0]"
-                    class="px-6 pb-4 pt-2 border-t border-gray-200 dark:border-gray-700 animate-fadeInDown" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <div *ngIf="faqExpanded[0]"
+                    class="px-6 pb-4 pt-2 border-t border-gray-200 dark:border-gray-700 animate-fadeInDown" itemscope
+                    itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                     <p class="text-gray-700 dark:text-gray-200" itemprop="text">
-                        Actualmente contamos con una sola sede ubicada en: <strong>Calle Los Lirios Mz H Lt. 18 - San Juan de Miraflores (SJM)</strong>. 
+                        Actualmente contamos con una sola sede ubicada en: <strong>Calle Los Lirios Mz H Lt. 18 - San
+                            Juan de Miraflores (SJM)</strong>.
                         Para mayor información, contáctanos por WhatsApp.
                     </p>
                 </div>
             </div>
 
             <!-- Pregunta 2: Atención a domicilio -->
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <button 
-                    (click)="toggleFaq(1)"
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden" itemscope itemprop="mainEntity"
+                itemtype="https://schema.org/Question">
+                <button (click)="toggleFaq(1)"
                     class="w-full px-6 py-4 flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
                     <h3 class="text-xl font-semibold text-cyan-600 dark:text-cyan-400 text-left" itemprop="name">
                         ¿Brindan atención a domicilio?
                     </h3>
-                    <svg 
-                        class="w-6 h-6 text-cyan-600 dark:text-cyan-400 transition-transform duration-300"
-                        [class.rotate-180]="faqExpanded[1]"
-                        fill="none" 
-                        stroke="currentColor" 
-                        viewBox="0 0 24 24">
+                    <svg class="w-6 h-6 text-cyan-600 dark:text-cyan-400 transition-transform duration-300"
+                        [class.rotate-180]="faqExpanded[1]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                 </button>
-                <div 
-                    *ngIf="faqExpanded[1]"
-                    class="px-6 pb-4 pt-2 border-t border-gray-200 dark:border-gray-700 animate-fadeInDown" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <div *ngIf="faqExpanded[1]"
+                    class="px-6 pb-4 pt-2 border-t border-gray-200 dark:border-gray-700 animate-fadeInDown" itemscope
+                    itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                     <p class="text-gray-700 dark:text-gray-200" itemprop="text">
-                        Sí, ofrecemos servicio de podología a domicilio para tu mayor comodidad. Este servicio incluye un cobro adicional 
-                        que cubre los gastos de traslado y el transporte del equipamiento necesario para brindarte una atención de calidad 
+                        Sí, ofrecemos servicio de podología a domicilio para tu mayor comodidad. Este servicio incluye
+                        un cobro adicional
+                        que cubre los gastos de traslado y el transporte del equipamiento necesario para brindarte una
+                        atención de calidad
                         en la comodidad de tu hogar.
                     </p>
                 </div>
             </div>
 
             <!-- Pregunta 3: Medios de pago -->
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <button 
-                    (click)="toggleFaq(2)"
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden" itemscope itemprop="mainEntity"
+                itemtype="https://schema.org/Question">
+                <button (click)="toggleFaq(2)"
                     class="w-full px-6 py-4 flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
                     <h3 class="text-xl font-semibold text-cyan-600 dark:text-cyan-400 text-left" itemprop="name">
                         ¿Qué medios de pago aceptan?
                     </h3>
-                    <svg 
-                        class="w-6 h-6 text-cyan-600 dark:text-cyan-400 transition-transform duration-300"
-                        [class.rotate-180]="faqExpanded[2]"
-                        fill="none" 
-                        stroke="currentColor" 
-                        viewBox="0 0 24 24">
+                    <svg class="w-6 h-6 text-cyan-600 dark:text-cyan-400 transition-transform duration-300"
+                        [class.rotate-180]="faqExpanded[2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                 </button>
-                <div 
-                    *ngIf="faqExpanded[2]"
-                    class="px-6 pb-4 pt-2 border-t border-gray-200 dark:border-gray-700 animate-fadeInDown" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <div *ngIf="faqExpanded[2]"
+                    class="px-6 pb-4 pt-2 border-t border-gray-200 dark:border-gray-700 animate-fadeInDown" itemscope
+                    itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                     <p class="text-gray-700 dark:text-gray-200 mb-2" itemprop="text">
                         Aceptamos diversos medios de pago para tu conveniencia:
                     </p>
@@ -238,29 +268,28 @@
             </div>
 
             <!-- Pregunta 4: Pie diabético -->
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <button 
-                    (click)="toggleFaq(3)"
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden" itemscope itemprop="mainEntity"
+                itemtype="https://schema.org/Question">
+                <button (click)="toggleFaq(3)"
                     class="w-full px-6 py-4 flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
                     <h3 class="text-xl font-semibold text-cyan-600 dark:text-cyan-400 text-left" itemprop="name">
                         ¿Atienden pie diabético?
                     </h3>
-                    <svg 
-                        class="w-6 h-6 text-cyan-600 dark:text-cyan-400 transition-transform duration-300"
-                        [class.rotate-180]="faqExpanded[3]"
-                        fill="none" 
-                        stroke="currentColor" 
-                        viewBox="0 0 24 24">
+                    <svg class="w-6 h-6 text-cyan-600 dark:text-cyan-400 transition-transform duration-300"
+                        [class.rotate-180]="faqExpanded[3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                 </button>
-                <div 
-                    *ngIf="faqExpanded[3]"
-                    class="px-6 pb-4 pt-2 border-t border-gray-200 dark:border-gray-700 animate-fadeInDown" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <div *ngIf="faqExpanded[3]"
+                    class="px-6 pb-4 pt-2 border-t border-gray-200 dark:border-gray-700 animate-fadeInDown" itemscope
+                    itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                     <p class="text-gray-700 dark:text-gray-200" itemprop="text">
-                        Sí, contamos con atención especializada para el tratamiento y cuidado del pie diabético. Nuestros servicios incluyen 
-                        evaluación completa, tratamiento preventivo y curativo de úlceras, corte de uñas especializado, y asesoramiento 
-                        sobre el cuidado diario. Es fundamental mantener un control regular para prevenir complicaciones, por lo que 
+                        Sí, contamos con atención especializada para el tratamiento y cuidado del pie diabético.
+                        Nuestros servicios incluyen
+                        evaluación completa, tratamiento preventivo y curativo de úlceras, corte de uñas especializado,
+                        y asesoramiento
+                        sobre el cuidado diario. Es fundamental mantener un control regular para prevenir
+                        complicaciones, por lo que
                         recomendamos agendar citas periódicas según la evaluación de tu caso particular.
                     </p>
                 </div>
@@ -271,3 +300,24 @@
     <app-contact class="max-w-6xl w-full mx-auto mt-12"></app-contact>
 
 </section>
+
+<!-- Botones flotantes de redes sociales -->
+<div class="floating-buttons">
+    <a href="https://wa.me/916541671" target="_blank" rel="noopener noreferrer" aria-label="Contáctanos por WhatsApp"
+        class="floating-btn whatsapp-btn">
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+        <span class="btn-text">WhatsApp</span>
+    </a>
+
+    <a href="https://www.instagram.com/dialepodologia22" target="_blank" rel="noopener noreferrer"
+        aria-label="Síguenos en Instagram" class="floating-btn instagram-btn">
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+            <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+        </svg>
+        <span class="btn-text">Instagram</span>
+    </a>
+</div>

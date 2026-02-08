@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, effect, signal } from '@angular/core';
 import { ProductoService } from '../../core/services/producto.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -6,6 +6,8 @@ import { Producto } from '../../core/models/producto';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ModalProductoComponent } from './components/modal-producto/modal-producto.component';
 import { Page } from 'core/models/page';
+import { debounceTime, distinctUntilChanged } from 'rxjs';
+import { toObservable } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-product',
@@ -31,6 +33,7 @@ export class ProductListComponent {
   productoSeleccionado = signal<Producto | null>(null);
   opcionSeleccionada = signal<number | null>(null);
 
+
   opcionesMinimas = [
     { value: null, label: 'Precio mínimo' },
     { value: 10, label: '> S/10' },
@@ -51,6 +54,15 @@ export class ProductListComponent {
 
   constructor(private productoService: ProductoService) {
     this.cargarProductos();
+
+    toObservable(this.nombre)
+      .pipe(
+        debounceTime(400),
+        distinctUntilChanged()
+      )
+      .subscribe((_) => {
+        this.filtrar();
+      });
   }
 
   cargarProductos() {

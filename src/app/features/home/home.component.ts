@@ -9,9 +9,11 @@ import { Meta, Title } from '@angular/platform-browser';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
-  imports: [ContactComponent, CommonModule, CarouselComponent,RouterLink],
+  imports: [ContactComponent, CommonModule, CarouselComponent, RouterLink],
 })
 export class HomeComponent implements OnInit {
+  showMore: boolean = false;
+
   faqExpanded: { [key: number]: boolean } = {
     0: false,
     1: false,
@@ -23,7 +25,7 @@ export class HomeComponent implements OnInit {
     private meta: Meta,
     private title: Title,
     @Inject(PLATFORM_ID) private platformId: Object
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.setSEOTags();
@@ -33,11 +35,11 @@ export class HomeComponent implements OnInit {
   private setSEOTags(): void {
     // Title
     this.title.setTitle('Clínica Diale - Podología Especializada en San Juan de Miraflores | Atención a Domicilio');
-    
+
     // Meta tags
     this.meta.updateTag({ name: 'description', content: 'Clínica de podología profesional en SJM. Tratamiento de pie diabético, uñas encarnadas, callos, fascitis plantar. Atención a domicilio. ¡Agenda tu cita ahora!' });
     this.meta.updateTag({ name: 'keywords', content: 'podología Lima, podólogo San Juan de Miraflores, pie diabético, uñas encarnadas, callos plantares, podología a domicilio, tratamiento pie diabético, cuidado del pie, productos podológicos, agenda cita podólogo' });
-    
+
     // Open Graph
     this.meta.updateTag({ property: 'og:title', content: 'Clínica Diale - Podología Especializada en Lima' });
     this.meta.updateTag({ property: 'og:description', content: 'Especialistas en cuidado del pie. Tratamiento de pie diabético, uñas encarnadas, callos. Atención a domicilio en Lima. ¡Agenda tu cita!' });
@@ -147,38 +149,27 @@ export class HomeComponent implements OnInit {
 
   casosReales: CarouselItem[] = [
     {
-      image: 'home/landing-pie.jpg',
+      image: 'carrusel/portada1.jpeg',
       title: 'Tratamiento de Uñas Encarnadas',
       description: 'Curación exitosa con técnicas especializadas'
     },
     {
-      image: 'home/landing-pie.jpg',
+      image: 'carrusel/portada2.jpeg',
       title: 'Eliminación de Callos Plantares',
       description: 'Resultados inmediatos y duraderos'
     },
     {
-      image: 'home/landing-pie.jpg',
+      image: 'carrusel/portada3.jpeg',
       title: 'Tratamiento de Fascitis Plantar',
       description: 'Recuperación completa del paciente'
-    },
-    {
-      image: 'home/landing-pie.jpg',
-      title: 'Cuidado de Pie Diabético',
-      description: 'Prevención y tratamiento especializado'
-    },
-    {
-      image: 'home/landing-pie.jpg',
-      title: 'Tratamiento de Hongos en Uñas',
-      description: 'Protocolo avanzado con láser'
-    },
-    {
-      image: 'home/landing-pie.jpg',
-      title: 'Corrección de Uñas Deformadas',
-      description: 'Técnicas ortopodológicas efectivas'
     }
   ];
 
   toggleFaq(index: number): void {
     this.faqExpanded[index] = !this.faqExpanded[index];
+  }
+
+  toggleShowMore(): void {
+    this.showMore = !this.showMore;
   }
 }
