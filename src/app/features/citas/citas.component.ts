@@ -245,6 +245,36 @@ export class CitasComponent {
     }
   }
 
+  abrirWhatsApp() {
+    if (!this.selectedDate || !this.horaSeleccionada) {
+      return;
+    }
+
+    // Formatear la fecha en formato legible
+    const fecha = new Date(this.selectedDate + 'T00:00:00');
+    const fechaFormateada = fecha.toLocaleDateString('es-PE', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+
+    // Crear el mensaje para WhatsApp
+    const mensaje = `Hola, me gustaría agendar una cita de podología para el *${fechaFormateada}* a las *${this.horaSeleccionada}*. ¿Está disponible?`;
+
+    // Codificar el mensaje para URL
+    const mensajeCodificado = encodeURIComponent(mensaje);
+
+    // Número de WhatsApp (sin el +51)
+    const numeroWhatsApp = '51903379990';
+
+    // Crear el enlace de WhatsApp
+    const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeCodificado}`;
+
+    // Abrir en nueva ventana
+    window.open(urlWhatsApp, '_blank');
+  }
+
   reservarCita() {
     if (this.form.invalid || !this.selectedDate || !this.horaSeleccionada)
       return;

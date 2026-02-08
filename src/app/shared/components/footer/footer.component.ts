@@ -8,10 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './footer.component.css'
 })
 export class FooterComponent {
-  phone = '916 541 671';
+  phone = '903 379 990';
   email = 'angui.bamc@gmail.com';
   address = 'Calle los lirios mz H lt 18 - Villa del Sur - SJM';
-  
+
   socialLinks = [
     { icon: 'instagram', url: 'https://www.instagram.com/dialepodologia22', label: 'Instagram' },
     { icon: 'tiktok', url: 'https://www.tiktok.com/@diale.podologia', label: 'TikTok' },
