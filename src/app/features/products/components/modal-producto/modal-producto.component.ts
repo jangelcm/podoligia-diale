@@ -16,11 +16,11 @@ import { Router } from '@angular/router';
 export class ModalProductoComponent {
   product = input.required<Producto>();
 
-  @Input() close: () => void = () => {};
+  @Input() close: () => void = () => { };
   cantidad: number = 1;
   mensaje: string = '';
 
-  constructor(private cartService: CartService, private router: Router) {}
+  constructor(private cartService: CartService, private router: Router) { }
 
   closeDialog() {
     if (this.close) this.close();
@@ -53,10 +53,9 @@ export class ModalProductoComponent {
 
     const totalPorProducto = this.product().precio! * this.cantidad;
 
-    mensaje += `1. ${this.product().nombre} x${
-      this.cantidad
-    } - S/ ${totalPorProducto.toFixed(2)}%0A`;
-    const telefono = '51916541671';
+    mensaje += `1. ${this.product().nombre} x${this.cantidad
+      } - S/ ${totalPorProducto.toFixed(2)}%0A`;
+    const telefono = '51903379990';
     const url = `https://wa.me/${telefono}?text=${mensaje}`;
     window.open(url, '_blank');
   }

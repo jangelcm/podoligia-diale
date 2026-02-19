@@ -157,7 +157,7 @@ export class CartDetailComponent {
       ).toFixed(2)}%0A`;
     });
     mensaje += `%0ATotal: S/ ${this.total.toFixed(2)}`;
-    const telefono = '51916541671';
+    const telefono = '51903379990';
     const url = `https://wa.me/${telefono}?text=${mensaje}`;
     window.open(url, '_blank');
   }

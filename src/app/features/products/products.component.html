@@ -3,36 +3,6 @@
     <p class="mb-6 text-gray-700 dark:text-gray-300">Descubre nuestra selección de preparados magistrales para el
         bienestar y salud de tus pies. Filtra por nombre o rango de precios para encontrar el producto ideal.</p>
 
-    <!-- Filtros -->
-    <div class="flex flex-wrap gap-4 mb-6 mt-10">
-        <!-- Nombre -->
-        <div class="relative w-full md:w-[360px]">
-            <input type="text" [ngModel]="nombre()" (ngModelChange)="nombre.set($event);" id="nombre"
-                class="peer border rounded px-3 py-3 w-full dark:bg-gray-800 dark:text-gray-100 focus:ring-1 transition"
-                placeholder=" " autocomplete="off" />
-            <label for="nombre" class="absolute left-3 -translate-y-1/2 bg-white dark:bg-gray-800 px-1 text-gray-500 dark:text-gray-300 pointer-events-none transition-all duration-200
-        peer-focus:-top-2 peer-focus:text-xs peer-focus:text-cyan-600 peer-focus:dark:text-cyan-300
-        peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500
-        -top-2 text-xs">Nombre del producto a buscar</label>
-        </div>
-        <!-- Precio mínimo -->
-        <div class="flex justify-between items-center gap-4 w-full md:w-auto">
-            <select [ngModel]="precioMin()" (ngModelChange)="precioMin.set($event); filtrar()"
-                class="border rounded px-3 py-3 w-full dark:bg-gray-800 dark:text-gray-100 focus:ring-1 transition">
-                @for (opcion of opcionesMinimas; track $index) {
-                <option [value]="opcion.value">{{ opcion.label }}</option>
-                }
-            </select>
-            <!-- Precio máximo -->
-            <select [ngModel]="precioMax()" (ngModelChange)="precioMax.set($event); filtrar()"
-                class="border rounded px-3 py-3 w-full dark:bg-gray-800 dark:text-gray-100 focus:ring-1 transition">
-                @for (opcion of opcionesMaximas; track $index) {
-                <option [value]="opcion.value">{{ opcion.label }}</option>
-                }
-            </select>
-        </div>
-
-    </div>
 
     <!-- Productos -->
     <div *ngIf="loading()" class="text-center py-8">Proximamente disponible!!...</div>
@@ -50,14 +20,5 @@
         [close]="cerrarModal">
     </app-modal-producto>
 
-    <div class="flex justify-center items-center gap-2 mt-6">
-        <button
-            class="bg-cyan-100 dark:bg-violet-800 text-cyan-700 dark:text-cyan-200 px-3 py-1 rounded hover:bg-cyan-200 dark:hover:bg-violet-700 disabled:opacity-50"
-            [disabled]="page() === 0" (click)="cambiarPagina(- 1)">&lt;</button>
-        <span>Página {{ page() + 1 }} de {{ totalPages() }}</span>
-        <button
-            class="bg-cyan-100 dark:bg-violet-800 text-cyan-700 dark:text-cyan-200 px-3 py-1 rounded hover:bg-cyan-200 dark:hover:bg-violet-700 disabled:opacity-50"
-            [disabled]="page() + 1 >= totalPages()" (click)="cambiarPagina(1)">&gt;</button>
-    </div>
 
 </section>

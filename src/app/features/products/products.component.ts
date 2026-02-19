@@ -1,13 +1,13 @@
 import { Component, effect, signal } from '@angular/core';
-import { ProductoService } from '../../core/services/producto.service';
+// import { ProductoService } from '../../core/services/producto.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Producto } from '../../core/models/producto';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ModalProductoComponent } from './components/modal-producto/modal-producto.component';
-import { Page } from 'core/models/page';
-import { debounceTime, distinctUntilChanged } from 'rxjs';
-import { toObservable } from '@angular/core/rxjs-interop';
+// import { Page } from 'core/models/page';
+// import { debounceTime, distinctUntilChanged } from 'rxjs';
+// import { toObservable } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-product',
@@ -21,9 +21,54 @@ import { toObservable } from '@angular/core/rxjs-interop';
   styleUrl: './products.component.css',
 })
 export class ProductListComponent {
-  productos = signal<any[]>([]);
-  totalPages = signal(0);
-  page = signal(0);
+  // Lista estática de productos
+  productosEstaticos: Producto[] = [
+    {
+      id: 2,
+      nombre: 'Ciclopirox 8%',
+      descripcion: 'Solución antimicótica',
+      precio: 78.00,
+      imagenUrl: 'carrito/ciclopirox.png',
+      stock: 30
+    },
+    {
+      id: 1,
+      nombre: 'Amorolfina 8%',
+      descripcion: 'Solución antimicótica',
+      precio: 85.00,
+      imagenUrl: 'carrito/amorolfina.jpeg',
+      stock: 25
+    },
+
+    {
+      id: 3,
+      nombre: 'Ketoconazol',
+      descripcion: 'Tratamiento antimicótico',
+      precio: 45.00,
+      imagenUrl: 'carrito/ketoconazol.png',
+      stock: 40
+    },
+    {
+      id: 5,
+      nombre: 'Terbinafina 8%',
+      descripcion: 'Solución antimicótica',
+      precio: 82.00,
+      imagenUrl: 'carrito/terbifina_8.jpeg',
+      stock: 35
+    },
+    {
+      id: 4,
+      nombre: 'Terbinafina 8% + Urea 10%',
+      descripcion: 'Solución antimicótica con urea',
+      precio: 95.00,
+      imagenUrl: 'carrito/terbifina_urea.png',
+      stock: 20
+    }
+  ];
+
+  productos = signal<Producto[]>(this.productosEstaticos);
+  // totalPages = signal(0);
+  // page = signal(0);
   nombre = signal('');
   precioMin = signal<number | null>(null);
   precioMax = signal<number | null>(null);
@@ -52,51 +97,51 @@ export class ProductListComponent {
     { value: 200, label: '< S/200' },
   ];
 
-  constructor(private productoService: ProductoService) {
-    this.cargarProductos();
-
-    toObservable(this.nombre)
-      .pipe(
-        debounceTime(400),
-        distinctUntilChanged()
-      )
-      .subscribe((_) => {
-        this.filtrar();
-      });
+  constructor() {
+    // Datos estáticos, no se necesita cargar desde servicio
+    // toObservable(this.nombre)
+    //   .pipe(
+    //     debounceTime(400),
+    //     distinctUntilChanged()
+    //   )
+    //   .subscribe((_) => {
+    //     // this.filtrar();
+    //   });
   }
 
-  cargarProductos() {
-    //numero de registros a mostrar
-    const size = 9;
+  // Funciones comentadas - usando datos estáticos
+  // cargarProductos() {
+  //   //numero de registros a mostrar
+  //   const size = 9;
 
-    this.loading.set(true);
-    this.productoService
-      .getProductosPaginado(
-        this.page(),
-        size,
-        this.nombre(),
-        this.precioMin() ?? undefined,
-        this.precioMax() ?? undefined
-      )
-      .subscribe((res: Page<Producto>) => {
-        this.productos.set(res.content);
-        this.totalPages.set(res.totalPages);
-        this.loading.set(false);
-      });
-  }
+  //   this.loading.set(true);
+  //   this.productoService
+  //     .getProductosPaginado(
+  //       this.page(),
+  //       size,
+  //       this.nombre(),
+  //       this.precioMin() ?? undefined,
+  //       this.precioMax() ?? undefined
+  //     )
+  //     .subscribe((res: Page<Producto>) => {
+  //       this.productos.set(res.content);
+  //       this.totalPages.set(res.totalPages);
+  //       this.loading.set(false);
+  //     });
+  // }
 
-  filtrar() {
-    this.page.set(0);
-    this.cargarProductos();
-  }
+  // filtrar() {
+  //   this.page.set(0);
+  //   this.cargarProductos();
+  // }
 
-  cambiarPagina(delta: number) {
-    const nuevaPagina = this.page() + delta;
-    if (nuevaPagina >= 0 && nuevaPagina < this.totalPages()) {
-      this.page.set(nuevaPagina);
-      this.cargarProductos();
-    }
-  }
+  // cambiarPagina(delta: number) {
+  //   const nuevaPagina = this.page() + delta;
+  //   if (nuevaPagina >= 0 && nuevaPagina < this.totalPages()) {
+  //     this.page.set(nuevaPagina);
+  //     this.cargarProductos();
+  //   }
+  // }
 
   abrirModal(producto: Producto) {
     this.productoSeleccionado.set(producto);

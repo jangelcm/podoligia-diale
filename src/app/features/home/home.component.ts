@@ -58,7 +58,7 @@ export class HomeComponent implements OnInit {
             name: 'Clínica Diale',
             image: 'https://podology-diale.netlify.app/home/landing-pie.jpg',
             url: 'https://podology-diale.netlify.app/',
-            telephone: '+51916541671',
+            telephone: '+51903379990',
             email: 'angui.bamc@gmail.com',
             priceRange: '$$',
             address: {

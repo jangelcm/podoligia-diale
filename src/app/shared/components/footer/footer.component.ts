@@ -15,7 +15,7 @@ export class FooterComponent {
   socialLinks = [
     { icon: 'instagram', url: 'https://www.instagram.com/dialepodologia22', label: 'Instagram' },
     { icon: 'tiktok', url: 'https://www.tiktok.com/@diale.podologia', label: 'TikTok' },
-    { icon: 'whatsapp', url: 'https://wa.me/916541671', label: 'WhatsApp' }
+    { icon: 'whatsapp', url: 'https://wa.me/903379990', label: 'WhatsApp' }
   ];
 
   callPhone() {
