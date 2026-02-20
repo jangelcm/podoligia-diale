@@ -34,17 +34,21 @@ export class HomeComponent implements OnInit {
 
   private setSEOTags(): void {
     // Title
-    this.title.setTitle('Clínica Diale - Podología Especializada en San Juan de Miraflores | Atención a Domicilio');
+    this.title.setTitle('Diale Podología en Lima | Clínica Especializada en Cuidado del Pie');
 
     // Meta tags
-    this.meta.updateTag({ name: 'description', content: 'Clínica de podología profesional en SJM. Tratamiento de pie diabético, uñas encarnadas, callos, fascitis plantar. Atención a domicilio. ¡Agenda tu cita ahora!' });
-    this.meta.updateTag({ name: 'keywords', content: 'podología Lima, podólogo San Juan de Miraflores, pie diabético, uñas encarnadas, callos plantares, podología a domicilio, tratamiento pie diabético, cuidado del pie, productos podológicos, agenda cita podólogo' });
+    this.meta.updateTag({ name: 'description', content: 'Diale Podología: clínica podológica en Lima. Especialistas en hongos, uñas encarnadas, callos, fascitis plantar y cuidado del pie. Atención en San Juan de Miraflores y a domicilio.' });
+    this.meta.updateTag({ name: 'keywords', content: 'podología Lima, podólogo en Lima, clínica podológica, cuidado del pie, pie diabético, uñas encarnadas, hongos, callos plantares, fascitis plantar, juanetes, podología a domicilio' });
 
     // Open Graph
-    this.meta.updateTag({ property: 'og:title', content: 'Clínica Diale - Podología Especializada en Lima' });
-    this.meta.updateTag({ property: 'og:description', content: 'Especialistas en cuidado del pie. Tratamiento de pie diabético, uñas encarnadas, callos. Atención a domicilio en Lima. ¡Agenda tu cita!' });
+    this.meta.updateTag({ property: 'og:title', content: 'Diale Podología | Clínica Especializada en Cuidado del Pie' });
+    this.meta.updateTag({ property: 'og:description', content: 'Especialistas en podología clínica y estética. Tratamiento de hongos, uñas encarnadas, callos. Atención profesional a domicilio.' });
     this.meta.updateTag({ property: 'og:type', content: 'website' });
-    this.meta.updateTag({ property: 'og:url', content: 'https://podology-diale.netlify.app/' });
+    this.meta.updateTag({ property: 'og:url', content: 'https://dialepodologia.com/' });
+    this.meta.updateTag({ property: 'og:image', content: 'https://dialepodologia.com/home/imagen-principal.png' });
+    this.meta.updateTag({ property: 'og:site_name', content: 'Diale Podología' });
+    this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
+    this.meta.updateTag({ name: 'twitter:image', content: 'https://dialepodologia.com/home/imagen-principal.png' });
   }
 
   private addStructuredData(): void {
@@ -54,10 +58,10 @@ export class HomeComponent implements OnInit {
         '@graph': [
           {
             '@type': 'MedicalBusiness',
-            '@id': 'https://podology-diale.netlify.app/#medicalbusiness',
-            name: 'Clínica Diale',
-            image: 'https://podology-diale.netlify.app/home/landing-pie.jpg',
-            url: 'https://podology-diale.netlify.app/',
+            '@id': 'https://dialepodologia.com/#medicalbusiness',
+            name: 'Diale Podología',
+            image: 'https://dialepodologia.com/home/imagen-principal.jpg',
+            url: 'https://dialepodologia.com/',
             telephone: '+51903379990',
             email: 'angui.bamc@gmail.com',
             priceRange: '$$',
@@ -89,10 +93,10 @@ export class HomeComponent implements OnInit {
           },
           {
             '@type': 'Service',
-            '@id': 'https://podology-diale.netlify.app/#service',
+            '@id': 'https://dialepodologia.com/#service',
             serviceType: 'Podología',
             provider: {
-              '@id': 'https://podology-diale.netlify.app/#medicalbusiness'
+              '@id': 'https://dialepodologia.com/#medicalbusiness'
             },
             areaServed: {
               '@type': 'City',
@@ -149,6 +153,11 @@ export class HomeComponent implements OnInit {
 
   casosReales: CarouselItem[] = [
     {
+      image: 'home/ofertaPodologia.jpg',
+      title: 'Atención a Domicilio',
+      description: 'Comodidad y profesionalismo en tu hogar'
+    },
+    {
       image: 'carrusel/portada1.jpeg',
       title: 'Tratamiento de Uñas Encarnadas',
       description: 'Curación exitosa con técnicas especializadas'
@@ -163,6 +172,7 @@ export class HomeComponent implements OnInit {
       title: 'Tratamiento de Fascitis Plantar',
       description: 'Recuperación completa del paciente'
     }
+
   ];
 
   toggleFaq(index: number): void {

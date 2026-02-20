@@ -27,7 +27,7 @@ export class ProductListComponent {
       id: 2,
       nombre: 'Ciclopirox 8%',
       descripcion: 'Solución antimicótica',
-      precio: 78.00,
+      precio: 79.00,
       imagenUrl: 'carrito/ciclopirox.png',
       stock: 30
     },
@@ -35,7 +35,7 @@ export class ProductListComponent {
       id: 1,
       nombre: 'Amorolfina 8%',
       descripcion: 'Solución antimicótica',
-      precio: 85.00,
+      precio: 89.00,
       imagenUrl: 'carrito/amorolfina.jpeg',
       stock: 25
     },
@@ -44,7 +44,7 @@ export class ProductListComponent {
       id: 3,
       nombre: 'Ketoconazol',
       descripcion: 'Tratamiento antimicótico',
-      precio: 45.00,
+      precio: 75.00,
       imagenUrl: 'carrito/ketoconazol.png',
       stock: 40
     },
@@ -52,7 +52,7 @@ export class ProductListComponent {
       id: 5,
       nombre: 'Terbinafina 8%',
       descripcion: 'Solución antimicótica',
-      precio: 82.00,
+      precio: 69.00,
       imagenUrl: 'carrito/terbifina_8.jpeg',
       stock: 35
     },
@@ -60,7 +60,7 @@ export class ProductListComponent {
       id: 4,
       nombre: 'Terbinafina 8% + Urea 10%',
       descripcion: 'Solución antimicótica con urea',
-      precio: 95.00,
+      precio: 69.00,
       imagenUrl: 'carrito/terbifina_urea.png',
       stock: 20
     }

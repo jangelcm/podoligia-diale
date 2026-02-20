@@ -2,7 +2,7 @@
 .floating-buttons {
     position: fixed;
     right: 20px;
-    top: 30%;
+    top: 40%;
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;

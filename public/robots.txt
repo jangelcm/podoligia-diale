@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://podology-diale.netlify.app/sitemap.xml
+Sitemap: https://dialepodologia.com/sitemap.xml
 
 # Bloquear recursos innecesarios
 Disallow: /assets/

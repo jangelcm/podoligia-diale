@@ -8,24 +8,24 @@
     
     <!-- Página de Inicio -->
     <url>
-        <loc>https://podology-diale.netlify.app/</loc>
-        <lastmod>2026-01-21</lastmod>
+        <loc>https://dialepodologia.com/</loc>
+        <lastmod>2026-02-20</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     
     <!-- Productos -->
     <url>
-        <loc>https://podology-diale.netlify.app/productos/list</loc>
-        <lastmod>2026-01-21</lastmod>
+        <loc>https://dialepodologia.com/productos/list</loc>
+        <lastmod>2026-02-20</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <!-- Citas -->
     <url>
-        <loc>https://podology-diale.netlify.app/citas</loc>
-        <lastmod>2026-01-21</lastmod>
+        <loc>https://dialepodologia.com/citas</loc>
+        <lastmod>2026-02-20</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
