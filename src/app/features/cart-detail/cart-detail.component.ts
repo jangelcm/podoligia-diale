@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CartService } from '../../core/services/cart.service';
 import { CommonModule, CurrencyPipe } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import {
   FormBuilder,
   FormGroup,
@@ -15,7 +15,7 @@ import { Producto } from 'core/models/producto';
 @Component({
   selector: 'app-cart-detail',
   standalone: true,
-  imports: [CommonModule, CurrencyPipe, ReactiveFormsModule],
+  imports: [CommonModule, CurrencyPipe, ReactiveFormsModule, RouterLink],
   templateUrl: './cart-detail.component.html',
   styleUrl: './cart-detail.component.css',
 })

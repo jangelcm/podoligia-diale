@@ -13,6 +13,7 @@ import { AuthService } from 'core/services/security/auth.service';
 import { AuthHelper } from '../../core/helpers/auth.helper';
 import { FechaDDMMYYYY } from 'shared/pipes/fechaDDMMYYYY.pipe';
 import { Cita } from 'core/models/cita';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-citas',
@@ -23,6 +24,7 @@ import { Cita } from 'core/models/cita';
     FormsModule,
     CalendarComponent,
     FechaDDMMYYYY,
+    RouterLink
   ],
   templateUrl: './citas.component.html',
   styleUrl: './citas.component.css',
@@ -221,10 +223,12 @@ export class CitasComponent {
   }
 
   generarHorarios() {
-    const horarios: string[] = [];
-    for (let h = 9; h <= 18; h += 2) {
-      horarios.push(`${h.toString().padStart(2, '0')}:00`);
-    }
+    const horarios: string[] = [
+      '14:00', // 2:00pm
+      '16:00', // 4:00pm
+      '18:00', // 6:00pm
+      '19:30'  // 7:30pm
+    ];
     return horarios;
   }
 

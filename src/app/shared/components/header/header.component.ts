@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, effect, signal } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../../core/services/security/auth.service';
 import { AuthHelper } from 'core/helpers/auth.helper';
 import { CartService } from 'core/services/cart.service';
@@ -8,7 +8,7 @@ import { ClickOutsideDirective } from 'shared/directives/click-outside.directive
 
 @Component({
   selector: 'app-header',
-  imports: [CommonModule, RouterLink, ClickOutsideDirective],
+  imports: [CommonModule, RouterLink, ClickOutsideDirective, RouterLinkActive],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })

@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
   phone = '903 379 990';
-  email = 'angui.bamc@gmail.com';
+  email = 'dialepodo22@gmail.com';
   address = 'Calle los lirios mz H lt 18 - Villa del Sur - SJM';
 
   socialLinks = [

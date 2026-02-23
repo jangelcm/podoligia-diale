@@ -60,10 +60,10 @@ export class HomeComponent implements OnInit {
             '@type': 'MedicalBusiness',
             '@id': 'https://dialepodologia.com/#medicalbusiness',
             name: 'Diale Podología',
-            image: 'https://dialepodologia.com/home/imagen-principal.jpg',
+            image: 'https://dialepodologia.com/home/imagen-principal.png',
             url: 'https://dialepodologia.com/',
             telephone: '+51903379990',
-            email: 'angui.bamc@gmail.com',
+            email: 'dialepodo22@gmail.com',
             priceRange: '$$',
             address: {
               '@type': 'PostalAddress',

@@ -1,10 +1,10 @@
 <div
-  [ngClass]="isDark.value? 'dark grid min-h-screen grid-rows-[100px_1fr_60px]':'grid min-h-screen grid-rows-[100px_1fr_100px]'">
+  [ngClass]="isDark.value? 'dark grid min-h-screen grid-rows-[120px_1fr_60px] md:grid-rows-[160px_1fr_60px]':'grid min-h-screen grid-rows-[120px_1fr_100px] md:grid-rows-[160px_1fr_100px]'">
   <!-- Header Section -->
-  <app-header></app-header>
+  <app-header class=""></app-header>
 
   <!-- Main Content Section -->
-  <main>
+  <main class="bg-gray-900">
     <router-outlet></router-outlet>
     <app-toast />
 

@@ -1,5 +1,15 @@
 <section class="max-w-6xl mx-auto py-8 px-4 animate-fadeInDown">
-    <h2 class="text-2xl font-bold mb-6 text-cyan-700 dark:text-cyan-300">Carrito de Compras</h2>
+    <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl font-bold text-cyan-300">Carrito de Compras</h2>
+        <a routerLink="/"
+            class="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 text-cyan-700 dark:text-cyan-300 rounded-lg hover:bg-cyan-100 dark:hover:bg-gray-700 transition font-semibold shadow-sm">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
+            <span class="hidden sm:inline">Volver al inicio</span>
+        </a>
+    </div>
     <div *ngIf="cart.length === 0" class="text-center text-gray-500 py-12">
         Tu carrito está vacío.
         <img src="carrito/carrito-vacio.png" alt="Sin productos" class="mx-auto w-32 mt-4 opacity-60 rounded-3xl" />
