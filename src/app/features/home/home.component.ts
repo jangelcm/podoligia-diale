@@ -175,6 +175,13 @@ export class HomeComponent implements OnInit {
 
   ];
 
+  treatments: { title: string; description: string; icon?: string }[] = [
+    { title: 'Atención a Domicilio', description: 'Comodidad total sin salir de casa', icon: 'icons/home.webp' },
+    { title: 'Uñas Encarnadas & Callos', description: 'Alivio inmediato garantizado', icon: 'icons/encarnada.png' },
+    { title: 'Tratamiento Láser Avanzado', description: 'Elimina hongos sin dolor', icon: 'icons/laser.jfif' },
+    { title: 'Productos Premium', description: 'Lo mejor para el cuidado diario', icon: 'icons/laca-antimicotica.jpg' }
+  ];
+
   toggleFaq(index: number): void {
     this.faqExpanded[index] = !this.faqExpanded[index];
   }

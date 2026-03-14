@@ -26,19 +26,9 @@ export class ModalProductoComponent {
     if (this.close) this.close();
   }
 
-  isStockInsufficient(): boolean {
-    if (!this.product()) return true;
-    return (
-      this.product().stock !== undefined &&
-      this.cantidad > this.product().stock!
-    );
-  }
 
   addToCart() {
-    if (this.isStockInsufficient()) {
-      this.mensaje = 'No hay suficiente stock disponible.';
-      return;
-    }
+
     this.cartService.addToCart(this.product(), this.cantidad);
     this.mensaje = '¡Producto añadido al carrito!';
 
@@ -62,10 +52,6 @@ export class ModalProductoComponent {
 
   goToCart() {
     this.addToCart();
-
-    if (!this.isStockInsufficient()) {
-      this.closeDialog();
-      this.router.navigate(['/carrito']);
-    }
+    this.router.navigate(['/carrito']);
   }
 }

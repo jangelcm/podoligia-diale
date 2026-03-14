@@ -9,8 +9,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { PedidoItemRequest } from 'core/models/pedido-item';
-import { PedidoRequest, PedidoService } from 'core/services/pedido.service';
-import { Producto } from 'core/models/producto';
 
 @Component({
   selector: 'app-cart-detail',
@@ -21,17 +19,20 @@ import { Producto } from 'core/models/producto';
 })
 export class CartDetailComponent {
   mostrarPago = false;
-  medioSeleccionado: 'yape' | 'transferencia' | 'entrega' | null = null;
-  comprobanteFile: File | null = null;
-  comprobantePreview: string | null = null;
+  medioSeleccionado: 'yape' | 'transferencia' | 'contraentrega' | null = null;
   mensajeCompra = '';
 
   pagoForm: FormGroup;
 
+  cart: any[] = [];
+
+  get total() {
+    return this.cartService.getTotal();
+  }
+
   constructor(
     private fb: FormBuilder,
     private cartService: CartService,
-    private pedidoService: PedidoService,
     private router: Router
   ) {
     this.cart = this.cartService.getCart();
@@ -47,8 +48,6 @@ export class CartDetailComponent {
   iraPagar() {
     this.mostrarPago = true;
     this.medioSeleccionado = null;
-    this.comprobanteFile = null;
-    this.comprobantePreview = null;
     this.mensajeCompra = '';
   }
 
@@ -56,56 +55,17 @@ export class CartDetailComponent {
     this.mostrarPago = false;
   }
 
-  seleccionarMedio(medio: 'yape' | 'transferencia' | 'entrega') {
+  seleccionarMedio(medio: 'yape' | 'transferencia' | 'contraentrega') {
     this.medioSeleccionado = medio;
-    this.comprobanteFile = null;
-    this.comprobantePreview = null;
     this.mensajeCompra = '';
   }
 
-  onComprobanteSeleccionado(event: Event) {
-    const input = event.target as HTMLInputElement;
-    if (input.files && input.files[0]) {
-      this.comprobanteFile = input.files[0];
-      const reader = new FileReader();
-      reader.onload = (e) =>
-        (this.comprobantePreview = reader.result as string);
-      reader.readAsDataURL(this.comprobanteFile);
-    }
-  }
-
   confirmarCompra() {
-    if (!this.comprobanteFile) return;
-    if (this.pagoForm.invalid) {
-      this.mensajeCompra = 'Debe ingresar dirección y teléfono.';
+    if (this.pagoForm.invalid || !this.medioSeleccionado) {
+      this.mensajeCompra = 'Por favor completa el formulario y selecciona un medio de pago.';
       return;
     }
-    const items: PedidoItemRequest[] = this.cart.map(
-      (item: { producto: Producto; cantidad: number }) =>
-        new PedidoItemRequest(item.producto.id, item.cantidad)
-    );
-
-    const request: PedidoRequest = {
-      items,
-      direccionEnvio: this.pagoForm.get('direccionEnvio')?.value,
-      telefonoContacto: this.pagoForm.get('telefonoContacto')?.value,
-    };
-    this.pedidoService.crearPedido(request, this.comprobanteFile).subscribe({
-      next: () => {
-        this.mensajeCompra =
-          '¡Compra realizada! Pronto confirmaremos tu pedido.';
-        this.cartService.clearCart();
-        this.cart = [];
-        setTimeout(() => {
-          this.cerrarPago();
-          this.irProductos();
-        }, 2000);
-      },
-      error: () => {
-        this.mensajeCompra =
-          'Error al registrar el pedido. Intente nuevamente.';
-      },
-    });
+    this.cuerpoConfirmacionCompraWssp(this.medioSeleccionado);
   }
 
   confirmarCompraEntrega() {
@@ -121,11 +81,6 @@ export class CartDetailComponent {
     }, 1500);
   }
 
-  cart: any[] = [];
-
-  get total() {
-    return this.cartService.getTotal();
-  }
 
   updateCantidad(productoId: number, cant: Event) {
     const cantidad = cant.target as HTMLInputElement;
@@ -168,6 +123,22 @@ export class CartDetailComponent {
   }
 
   irProductos() {
-    this.router.navigate(['/productos/list']); // o window.history.back();
+    this.router.navigate(['/productos/list']);
+  }
+
+  cuerpoConfirmacionCompraWssp(medioSeleccionado: 'yape' | 'transferencia' | 'contraentrega') {
+    const telefono = "51903379990";
+    const items = this.cart.map(i => `- ${i.producto.nombre} (x${i.cantidad})`).join('\n');
+
+    const mensaje = `¡Hola Diale! 👋\n\n` +
+      `Deseo confirmar mi pedido:\n` +
+      `${items}\n\n` +
+      `*Total:* ${this.total}\n` +
+      `*Dirección:* ${this.pagoForm.value.direccionEnvio}\n` +
+      `*Método de pago:* ${medioSeleccionado.toUpperCase()}\n\n` +
+      (medioSeleccionado !== 'contraentrega' ? `✅ Ya tengo la captura del pago lista para enviarla.` : '');
+
+    const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(mensaje)}`;
+    window.open(url, '_blank');
   }
 }

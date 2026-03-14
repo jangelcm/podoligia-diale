@@ -1,280 +1,289 @@
-<section
-    class="landing-page bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-gray-200 min-h-screen flex flex-col justify-start py-8">
-    <section class="relative py-10 text-white">
+<section class="landing-page bg-gray-50 text-gray-800 min-h-screen">
 
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6  text-cyan-300  animate-fadeInDown">
-                Podóloga en Lima – Especialista en uñas encarnadas y hongos
-            </h1>
+    <header class="relative text-white overflow-hidden">
+        <header class="relative bg-gray-900 text-white overflow-hidden mobile-hero-layout">
 
-            <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-                Atención profesional certificada en podología clínica y estética en Lima.
-                Tratamientos seguros, higiénicos y con tecnología avanzada para la salud de tus pies.
-            </p>
+            <picture class="absolute inset-0 z-0">
+                <source srcset="home/fondo_hero.jpeg" media="(max-width: 767px)" type="image/webp">
+                <img src="home/fondo_hero.jpeg" alt="Consultorio Podológico Moderno en Lima"
+                    class="absolute inset-0 w-full h-full object-cover shadow-lg opacity-40" loading="lazy" width="1920"
+                    height="1080">
+            </picture>
 
+            <div class="relative z-20 max-w-7xl mx-auto px-6 text-center py-16 md:py-24">
 
+                <span
+                    class="inline-block px-4 py-1 rounded-full bg-cyan-500/20 text-cyan-300 text-sm font-semibold mb-6 tracking-wide uppercase shadow-inner mobile-cinta-flotante">
+                    Salud y Bienestar para tus pies
+                </span>
 
-            <div class="flex flex-col justify-center sm:flex-row gap-4 mb-6">
-                <a routerLink="/citas" aria-label="Reservar cita de podología en Clínica Diale"
-                    class="inline-block text-center px-6 py-3 rounded-lg bg-cyan-600 text-white font-semibold shadow hover:bg-cyan-700 transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg text-base md:text-lg">
-                    Agender cita
-                </a>
-                <a routerLink="/productos/list" aria-label="Ver catálogo de productos de podología y cuidado del pie"
-                    class="inline-block text-center px-6 py-3 rounded-lg border-2 border-cyan-600 text-cyan-200 font-semibold hover:bg-cyan-900 transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg">
-                    🛒 Ver Tratamientos/Productos
-                </a>
-            </div>
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6 animate-fadeInDown text-gray-100">
+                    Podóloga Especialista en <span class="text-cyan-400">Lima</span>
+                </h1>
 
-        </div>
-    </section>
-    <section class="py-10 bg-white text-gray-800 animate-fadeInDown">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-
-            <div>
-                <img src="home/imagen-principal.png" alt="Especialista en podología clínica en Lima"
-                    class="rounded-xl shadow-lg w-full object-cover">
-            </div>
-
-            <div>
-                <h2 class="text-3xl font-bold mb-6 text-cyan-600">
-                    Especialista en Podología
-                </h2>
-
-                <p class="mb-4 text-gray-600">
-                    Soy <strong>Liset Angie Chavez Mendoza</strong>, especialista certificada en podología clínica con
-                    más de 4 años de experiencia tratando uñas encarnadas, hongos, y callosidades.
+                <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+                    Tratamientos clínicos avanzados para uñas encarnadas, callos y hongos con la tecnología más segura
+                    de Lima Sur.
                 </p>
 
-                <p class="mb-4 text-gray-600">
-                    Trabajo bajo estrictos protocolos de bioseguridad, garantizando una atención segura, profesional y
-                    personalizada.
-                </p>
-
-                <ul class="space-y-2 text-gray-600">
-                    <li>✔ Certificación en Podología Clínica</li>
-                    <li>✔ Tratamientos con tecnología avanzada</li>
-                    <li>✔ Atención en Lima y Lima Sur</li>
-                </ul>
+                <div class="flex flex-col gap-4 justify-center max-w-xl mx-auto">
+                    <a routerLink="/citas"
+                        class="px-8 py-4 rounded-full bg-cyan-600 text-white font-bold shadow-lg hover:bg-cyan-500 transition-all transform hover:scale-105 text-lg flex items-center justify-center gap-2">
+                        📅 Reservar mi Cita
+                    </a>
+                    <a routerLink="/productos/list"
+                        class="px-8 py-4 rounded-full border-2 border-white/30 text-white font-bold hover:bg-white/10 transition-all text-lg flex items-center justify-center gap-2">
+                        🛒 Ver Productos de Tratamiento
+                    </a>
+                </div>
             </div>
+        </header>
+    </header>
 
+    <section class="py-10 bg-white">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="relative">
+                <div class="absolute -top-4 -left-4 w-24 h-24 bg-cyan-100 rounded-full -z-10"></div>
+                <img src="home/imagen-principal.png" alt="Liset Angie Chavez Mendoza"
+                    class="rounded-2xl shadow-2xl w-full object-cover border-b-8 border-cyan-600">
+                <div class="absolute -bottom-6 -right-6 bg-white p-6 shadow-xl rounded-lg hidden md:block">
+                    <p class="text-cyan-600 font-bold text-2xl">+4 Años</p>
+                    <p class="text-gray-500 text-sm">Experiencia Clínica</p>
+                </div>
+            </div>
+            <div>
+                <h2 class="text-4xl font-bold mb-6 text-gray-900">
+                    Atención Profesional con <br><span class="text-cyan-600">Liset Angie Chavez</span>
+                </h2>
+                <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                    Especialista certificada dedicada a devolverte la comodidad al caminar. Mi enfoque combina la
+                    <strong>bioseguridad estricta</strong> con las últimas innovaciones en podología estética y clínica.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                    <div class="flex items-center gap-3 text-gray-700">
+                        <span class="text-cyan-500 text-xl">🛡️</span> Bioseguridad Garantizada
+                    </div>
+                    <div class="flex items-center gap-3 text-gray-700">
+                        <span class="text-cyan-500 text-xl">🔬</span> Tecnología Láser
+                    </div>
+                    <div class="flex items-center gap-3 text-gray-700">
+                        <span class="text-cyan-500 text-xl">🏠</span> Atención a Domicilio
+                    </div>
+                    <div class="flex items-center gap-3 text-gray-700">
+                        <span class="text-cyan-500 text-xl">📍</span> Sede en SJM
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
-    <!-- Sección de confianza -->
-    <article class="py-16 max-w-7xl w-full mx-auto flex flex-col-reverse md:flex-row items-center gap-8 px-8">
-        <div class="flex-1 flex flex-col md:items-start">
-            <div class="justify-center md:justify-start">
-                <h2 class="text-2xl md:text-3xl font-bold text-cyan-600 dark:text-cyan-300 mb-2">
-                    Tratamientos que transforman</h2>
 
-                <!-- Estrellas de calificación -->
-                <div class="flex gap-1 mb-4">
-                    <svg class="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 24 24">
-                        <path
-                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                    <svg class="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 24 24">
-                        <path
-                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                    <svg class="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 24 24">
-                        <path
-                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                    <svg class="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 24 24">
-                        <path
-                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                    <svg class="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 24 24">
-                        <path
-                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                </div>
-
-                <!-- Lista con iconos de check modernos -->
-                <ul class="text-lg text-start text-gray-400 space-y-3">
-                    <li class="flex items-start gap-3">
-                        ✔
-                        <span><strong>Atención a Domicilio:</strong> Comodidad total sin salir de casa</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        ✔
-                        <span><strong>Uñas Encarnadas & Callos:</strong> Alivio inmediato garantizado</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        ✔
-                        <span><strong>Tratamiento Láser Avanzado:</strong> Elimina hongos sin dolor</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        ✔
-                        <span><strong>Pie Diabético:</strong> Prevención y cuidado especializado</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        ✔
-                        <span><strong>Productos Premium:</strong> Lo mejor para el cuidado diario</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="flex-1 flex justify-center">
-            <img src="home/ofertaPodologia.jpg"
-                alt="Tratamiento con láser podológico para hongos en uñas - Clínica Diale"
-                class="rounded-xl shadow-lg w-full max-w-md object-cover bg-gray-100 dark:bg-gray-800" loading="lazy"
-                width="400" height="300" />
-        </div>
-
-    </article>
-
-    <!-- Sección de Promociones -->
-    <article class="max-w-full bg-white py-16 transition-all duration-300 px-8">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-12 animate-fadeInDown">
-                <h2 class="text-3xl md:text-4xl font-bold text-cyan-600 dark:text-cyan-300 mb-4">
-                    Promociones exclusivas
-                </h2>
-                <p class="text-lg text-gray-400 dark:text-gray-200 font-medium">
-                    Descubre cómo transformamos vidas con tratamientos podológicos de alta calidad. ¡Resultados
-                    garantizados!
-            </div>
-            <app-carousel [items]="casosReales" [autoPlay]="true" [interval]="5000"
-                class="animate-fadeInDown transition-transform duration-500 hover:scale-[1.01]">
-            </app-carousel>
-        </div>
-    </article>
-
-    <!-- Sección de Preguntas Frecuentes -->
-    <article class="mt-12 max-w-6xl w-full mx-auto animate-fadeInDown px-8" itemscope
-        itemtype="https://schema.org/FAQPage">
-        <h2 class="text-3xl font-bold text-cyan-600 mb-8 text-center mt-12">Preguntas Frecuentes</h2>
-        <div class="space-y-4">
-            <!-- Pregunta 1: Más sedes -->
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg"
-                itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <button (click)="toggleFaq(0)"
-                    class="w-full px-6 py-4 flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                    <h3 class="text-xl font-semibold text-cyan-600 dark:text-cyan-400 text-left" itemprop="name">
-                        ¿Tienen más sedes?
-                    </h3>
-                    <svg class="w-6 h-6 text-cyan-600 dark:text-cyan-400 transition-transform duration-300"
-                        [class.rotate-180]="faqExpanded[0]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-                <div *ngIf="faqExpanded[0]" class="px-6 pb-4 pt-2 border-t border-gray-200 animate-fadeInDown" itemscope
-                    itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                    <p class="text-gray-400" itemprop="text">
-                        Actualmente contamos con una sola sede ubicada en: <strong>Calle Los Lirios Mz H Lt. 18 - San
-                            Juan de Miraflores (SJM)</strong>.
-                        Para mayor información, contáctanos por WhatsApp.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Pregunta 2: Atención a domicilio -->
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg"
-                itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <button (click)="toggleFaq(1)"
-                    class="w-full px-6 py-4 flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                    <h3 class="text-xl font-semibold text-cyan-600 dark:text-cyan-400 text-left" itemprop="name">
-                        ¿Brindan atención a domicilio?
-                    </h3>
-                    <svg class="w-6 h-6 text-cyan-600 dark:text-cyan-400 transition-transform duration-300"
-                        [class.rotate-180]="faqExpanded[1]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-                <div *ngIf="faqExpanded[1]"
-                    class="px-6 pb-4 pt-2 border-t border-gray-200 dark:border-gray-700 animate-fadeInDown" itemscope
-                    itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                    <p class="text-gray-400 dark:text-gray-200" itemprop="text">
-                        Sí, ofrecemos servicio de podología a domicilio para tu mayor comodidad. Este servicio incluye
-                        un cobro adicional
-                        que cubre los gastos de traslado y el transporte del equipamiento necesario para brindarte una
-                        atención de calidad
-                        en la comodidad de tu hogar.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Pregunta 3: Medios de pago -->
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg"
-                itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <button (click)="toggleFaq(2)"
-                    class="w-full px-6 py-4 flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                    <h3 class="text-xl font-semibold text-cyan-600 dark:text-cyan-400 text-left" itemprop="name">
-                        ¿Qué medios de pago aceptan?
-                    </h3>
-                    <svg class="w-6 h-6 text-cyan-600 dark:text-cyan-400 transition-transform duration-300"
-                        [class.rotate-180]="faqExpanded[2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-                <div *ngIf="faqExpanded[2]"
-                    class="px-6 pb-4 pt-2 border-t border-gray-200 dark:border-gray-700 animate-fadeInDown" itemscope
-                    itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                    <p class="text-gray-400 dark:text-gray-200 mb-2" itemprop="text">
-                        Aceptamos diversos medios de pago para tu conveniencia:
-                    </p>
-                    <ul class="list-disc pl-5 text-gray-400 dark:text-gray-200 space-y-1">
-                        <li>Efectivo</li>
-                        <li>Yape</li>
-                        <li>Plin</li>
-                        <li>Transferencias bancarias BCP</li>
-                        <li>Transferencias bancarias Interbank</li>
+    <article class="py-10 text-white bg-gradient-to-b bg-white border-b-8 border-cyan-600">
+        <div class=" max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="flex-1">
+                    <h2 class="text-4xl font-bold text-violet-400 mb-4">Tratamientos que transforman</h2>
+                    <div class="flex gap-1 mb-6">
+                        <span class="text-yellow-400 text-2xl">★★★★★</span>
+                        <span class="ml-2 text-gray-400 pt-1">(Pacientes satisfechos)</span>
+                    </div>
+                    <ul class="space-y-4">
+                        <li *ngFor="let t of treatments"
+                            class="flex items-start gap-4 p-4 rounded-xl bg-violet-200 hover:bg-violet-300 transition-colors">
+                            <div
+                                class="relative flex-shrink-0 w-16 h-16 rounded-full border-2 border-cyan-500 bg-gray-900/80 p-0.5 shadow-lg shadow-cyan-500/10">
+                                <img [src]="t.icon" alt="{{ t.title }}" class="w-full h-full p-2 rounded-full" />
+                            </div>
+                            <div>
+                                <h4 class="font-bold">{{ t.title }}</h4>
+                                <p class="text-sm text-gray-700">{{ t.description }}</p>
+                            </div>
+                        </li>
                     </ul>
                 </div>
-            </div>
-
-            <!-- Pregunta 4: Pie diabético -->
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg"
-                itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <button (click)="toggleFaq(3)"
-                    class="w-full px-6 py-4 flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                    <h3 class="text-xl font-semibold text-cyan-600 dark:text-cyan-400 text-left" itemprop="name">
-                        ¿Atienden pie diabético?
-                    </h3>
-                    <svg class="w-6 h-6 text-cyan-600 dark:text-cyan-400 transition-transform duration-300"
-                        [class.rotate-180]="faqExpanded[3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-                <div *ngIf="faqExpanded[3]"
-                    class="px-6 pb-4 pt-2 border-t border-gray-200 dark:border-gray-700 animate-fadeInDown" itemscope
-                    itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                    <p class="text-gray-400 dark:text-gray-200" itemprop="text">
-                        Sí, contamos con atención especializada para el tratamiento y cuidado del pie diabético.
-                        Nuestros servicios incluyen
-                        evaluación completa, tratamiento preventivo y curativo de úlceras, corte de uñas especializado,
-                        y asesoramiento
-                        sobre el cuidado diario. Es fundamental mantener un control regular para prevenir
-                        complicaciones, por lo que
-                        recomendamos agendar citas periódicas según la evaluación de tu caso particular.
-                    </p>
+                <div class="flex-1 relative justify-end">
+                    <img src="home/ofertaPodologia.jpg" alt="Láser podológico"
+                        class="rounded-3xl shadow-2xl border-4 border-cyan-400 max-w-sm mx-auto">
                 </div>
             </div>
         </div>
     </article>
+    <section id="contacto" class="py-24 bg-white dark:bg-gray-950 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
 
-    <app-contact class="max-w-6xl w-full mx-auto mt-12"></app-contact>
+            <div class="text-center mb-16 animate-fadeIn">
+                <h2 class="text-2xl font-bold text-cyan-600 uppercase tracking-widest mb-3">Contáctanos | Especialistas
+                    en Lima Sur
+                </h2>
 
+                <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                    ¿Problemas con tus pies? Visítanos en nuestro consultorio o solicita tus <strong>citas a
+                        domicilio</strong> para tu total comodidad y seguridad.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+
+                <div class="lg:col-span-1 space-y-8 animate-fadeInLeft">
+
+                    <div
+                        class="group p-6 bg-gray-50 dark:bg-gray-900 rounded-[2rem] border border-gray-100 dark:border-gray-800 transition-all hover:shadow-xl hover:shadow-cyan-500/5">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-cyan-500 rounded-2xl text-white shadow-lg shadow-cyan-500/30">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-900 dark:text-white text-lg">Nuestra Sede</h3>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm mt-1 leading-snug">
+                                    Calle los lirios mz.H lt. 18 Villa del Sur, <br>
+                                    <strong>San Juan de Miraflores</strong>, Lima.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="p-6 bg-gray-50 dark:bg-gray-900 rounded-[2rem] border border-gray-100 dark:border-gray-800">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-indigo-500 rounded-2xl text-white">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-900 dark:text-white text-lg">Horario de Atención</h3>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                                    Lunes a Sábado <br>
+                                    <span class="text-indigo-500 font-semibold italic">Atención previa cita</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/51903379990" target="_blank"
+                        class="flex items-center justify-center gap-3 w-full py-5 bg-green-500 hover:bg-green-600 text-white rounded-[2rem] font-bold shadow-lg shadow-green-500/30 transition-all hover:scale-[1.02] active:scale-[0.98]">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.031-.967-.273-.099-.472-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51-.173-.008-.372-.01-.571-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.099 3.2 5.077 4.366.71.306 1.263.489 1.695.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.288.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                        </svg>
+                        Agendar por WhatsApp
+                    </a>
+                </div>
+
+                <div class="lg:col-span-2 relative h-[500px] w-full animate-fadeInRight">
+                    <div
+                        class="absolute -inset-4 bg-cyan-100 dark:bg-cyan-900/20 rounded-[3rem] transform -rotate-1 hidden md:block">
+                    </div>
+
+                    <div
+                        class="relative h-full w-full rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white dark:border-gray-900">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15600.0!2d-76.97!3d-12.16!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDA5JzM2LjAiUyA3NsKwNTgnMTIuMCJX!5e0!3m2!1ses!2spe!4v1710000000000!5m2!1ses!2spe"
+                            class="w-full h-full border-0" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+
+                    <div
+                        class="absolute bottom-6 left-6 right-6 md:left-auto md:right-10 md:w-64 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-white/20">
+                        <p class="text-[10px] font-black uppercase tracking-tighter text-cyan-600 mb-1">Tu salud en
+                            buenas manos</p>
+                        <p class="text-sm font-bold text-gray-800 dark:text-gray-100 italic">"Atención profesional con
+                            equipos esterilizados."</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section id="faq" class="py-24 bg-gradient-to-b from-gray-900 to-gray-800">
+        <div class="max-w-4xl mx-auto px-6">
+
+            <div class="text-center mb-16">
+                <h2 class="text-base font-bold text-cyan-600 uppercase tracking-widest mb-3">Resolviendo tus dudas</h2>
+                <h3 class="text-4xl font-black text-violet-400 dark:text-white tracking-tight">Preguntas Frecuentes</h3>
+            </div>
+
+            <div class="space-y-4">
+                <div
+                    class="group bg-white dark:bg-gray-800 rounded-[2rem] border border-gray-100 dark:border-gray-700 shadow-sm overflow-hidden">
+                    <details class="p-6">
+                        <summary class="flex items-center justify-between cursor-pointer list-none">
+                            <span class="text-lg font-bold text-gray-800 dark:text-gray-100">¿Cómo garantizan la higiene
+                                de los instrumentos?</span>
+                            <span class="text-cyan-500 transition-transform group-open:rotate-180">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </span>
+                        </summary>
+                        <p class="mt-4 text-gray-600 dark:text-gray-400 leading-relaxed">
+                            En <strong>Diale</strong>, tu seguridad es lo primero. Utilizamos un protocolo de
+                            esterilización de grado clínico y materiales descartables para cada paciente, evitando
+                            cualquier riesgo de contaminación.
+                        </p>
+                    </details>
+                </div>
+
+                <div
+                    class="group bg-white dark:bg-gray-800 rounded-[2rem] border border-gray-100 dark:border-gray-700 shadow-sm overflow-hidden">
+                    <details class="p-6">
+                        <summary class="flex items-center justify-between cursor-pointer list-none">
+                            <span class="text-lg font-bold text-gray-800 dark:text-gray-100">¿A qué zonas de Lima Sur
+                                llegan con el servicio a domicilio?</span>
+                            <span class="text-cyan-500 transition-transform group-open:rotate-180">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </span>
+                        </summary>
+                        <p class="mt-4 text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Cubrimos todo <strong>San Juan de Miraflores</strong> y distritos aledaños de Lima Sur.
+                            Consulta por WhatsApp la disponibilidad según tu ubicación exacta para programar tu cita.
+                        </p>
+                    </details>
+                </div>
+
+                <div
+                    class="group bg-white dark:bg-gray-800 rounded-[2rem] border border-gray-100 dark:border-gray-700 shadow-sm overflow-hidden">
+                    <details class="p-6">
+                        <summary class="flex items-center justify-between cursor-pointer list-none">
+                            <span class="text-lg font-bold text-gray-800 dark:text-gray-100">¿El tratamiento para uñeros
+                                es doloroso?</span>
+                            <span class="text-cyan-500 transition-transform group-open:rotate-180">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </span>
+                        </summary>
+                        <p class="mt-4 text-gray-600 dark:text-gray-400 leading-relaxed">
+                            Nuestra especialista utiliza técnicas de <strong>podología avanzada</strong> diseñadas para
+                            minimizar cualquier molestia. El objetivo es aliviar el dolor desde la primera sesión de
+                            forma profesional y delicada.
+                        </p>
+                    </details>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <p class="text-gray-500 dark:text-gray-400 mb-4 text-sm">¿Tienes otra duda?</p>
+                <a href="https://wa.me/51903379990"
+                    class="inline-flex items-center gap-2 text-cyan-600 dark:text-cyan-400 font-bold hover:underline">
+                    Pregúntanos directamente por WhatsApp
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
 </section>
-
-<!-- Botones flotantes de redes sociales -->
-<div class="floating-buttons">
-    <a href="https://wa.me/903379990" target="_blank" rel="noopener noreferrer" aria-label="Contáctanos por WhatsApp"
-        class="floating-btn whatsapp-btn">
-        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-            <path
-                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-        </svg>
-        <span class="btn-text">WhatsApp</span>
-    </a>
-
-    <a href="https://www.instagram.com/dialepodologia22" target="_blank" rel="noopener noreferrer"
-        aria-label="Síguenos en Instagram" class="floating-btn instagram-btn">
-        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-            <path
-                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-        </svg>
-        <span class="btn-text">Instagram</span>
-    </a>
-</div>

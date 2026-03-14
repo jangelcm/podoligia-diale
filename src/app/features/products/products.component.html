@@ -1,25 +1,52 @@
-<section class="max-w-6xl mx-auto py-8 px-4">
-    <h2 class="text-2xl font-bold mb-6 text-cyan-300">Tratamientos Personalizados</h2>
-    <p class="mb-6 text-gray-300">Descubre nuestra selección de tratamientos personalizados para el
-        cuidado de tus pies. Nuestros productos magistrales están formulados por expertos para abordar tus necesidades
-        específicas, brindándote alivio y bienestar. ¡Explora nuestra gama de soluciones podológicas y encuentra el
-        producto perfecto para ti!</p>
+<section class="relative min-h-screen animate-fadeInRight overflow-hidden bg-gray-50">
 
-    <!-- Productos -->
-    <div *ngIf="loading()" class="text-center py-8">Proximamente disponible!!...</div>
-    <div *ngIf="!loading() && productos().length === 0" class="text-center py-8 text-gray-500">
-        No se encontraron productos.
+    <picture class="absolute inset-0 z-0 h-full overflow-hidden">
+        <source srcset="fondo_products.jpeg" media="(max-width: 767px)" type="image/webp">
+        <img src="fondo_products.jpeg" alt="Consultorio Podológico Moderno en Lima"
+            class="absolute inset-0 w-full h-full object-cover opacity-15 mobile-hero-bg " loading="lazy" width="1920"
+            height="1080">
+    </picture>
+
+    <div class="relative z-20 max-w-5xl mx-auto px-6 text-center py-20">
+
+        <span
+            class="inline-block px-4 py-1 rounded-full bg-violet-100 text-violet-700 text-sm font-semibold mb-4 tracking-wide uppercase">
+            Cuidado Premium para tus Pies
+        </span>
+
+        <h1 class="bg-white text-4xl md:text-6xl font-extrabold leading-tight mb-6 animate-fadeInDown text-gray-700">
+            Tratamientos <span class="text-violet-400">Personalizados</span>
+        </h1>
+
+        <p
+            class="bg-cyan-100 p-2 text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-10 leading-relaxed rounded-lg shadow">
+            Descubre nuestra selección de productos magistrales, formulados por expertos para abordar tus
+            necesidades específicas. Bríndales alivio, bienestar y salud a tus pies con nuestras soluciones
+            podológicas avanzadas.
+        </p>
+
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <app-product-card *ngFor="let producto of productos()" [producto]="producto"
-            (agregarProducto)="agregarProducto(producto)">
-        </app-product-card>
-    </div>
 
-    <!-- Modal de producto -->
-    <app-modal-producto *ngIf="modalAbierto() && productoSeleccionado()" [product]="productoSeleccionado()!"
-        [close]="cerrarModal">
-    </app-modal-producto>
+    <article
+        class="relative z-30 max-w-screen-2xl mx-auto py-12 px-6 lg:px-8 bg-white rounded-3xl shadow-2xl -mt-10 mb-20">
+        <div *ngIf="loading()" class="text-center py-20 flex flex-col items-center gap-4 text-gray-500">
+            <div class="w-12 h-12 border-4 border-cyan-200 border-t-cyan-600 rounded-full animate-spin"></div>
+            <span class="font-medium">Proximamente disponible!!...</span>
+        </div>
 
+        <div *ngIf="!loading() && productos().length === 0"
+            class="text-center py-20 text-gray-500 rounded-2xl bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800">
+            No se encontraron productos en esta categoría.
+        </div>
 
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+            <app-product-card *ngFor="let producto of productos()" [producto]="producto"
+                (agregarProducto)="agregarProducto(producto)" class="animate-fadeInDown">
+            </app-product-card>
+        </div>
+
+        <app-modal-producto *ngIf="modalAbierto() && productoSeleccionado()" [product]="productoSeleccionado()!"
+            [close]="cerrarModal">
+        </app-modal-producto>
+    </article>
 </section>

@@ -1,119 +1,81 @@
-import { Component } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  Validators,
-  ReactiveFormsModule,
-  FormsModule,
-} from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { CitasService } from '../../core/services/citas.service';
-import { CalendarComponent } from './calendar.component';
-import { AuthService } from 'core/services/security/auth.service';
-import { AuthHelper } from '../../core/helpers/auth.helper';
-import { FechaDDMMYYYY } from 'shared/pipes/fechaDDMMYYYY.pipe';
-import { Cita } from 'core/models/cita';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common'; // Asegúrate de importar CommonModule para directivas como @if, @for
 import { RouterLink } from '@angular/router';
+import { CalendarComponent } from './calendar.component';
+import { FechaDDMMYYYY } from 'shared/pipes/fechaDDMMYYYY.pipe';
 
+// Define una interfaz sencilla para estructurar tus horarios
+export interface Horario {
+  hora: string;       // Valor legible para el usuario (ej: '2:00 PM')
+  valor: string;      // Valor de 24h para WhatsApp y lógica (ej: '14:00')
+  disponible: boolean; // Para controlar si el botón está activo
+}
 @Component({
   selector: 'app-citas',
   standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    FormsModule,
-    CalendarComponent,
-    FechaDDMMYYYY,
-    RouterLink
-  ],
+  // Asegúrate de incluir CommonModule y tu componente de calendario aquí
+  imports: [CommonModule, RouterLink, CalendarComponent, FechaDDMMYYYY /*, FechaDDMMYYYYPipe */],
   templateUrl: './citas.component.html',
-  styleUrl: './citas.component.css',
+  styleUrls: ['./citas.component.css'] // Si usas estilos CSS
 })
-export class CitasComponent {
-  meses: any[] = [];
+export class CitasComponent implements OnInit {
+
+  // --- DATOS Y ESTADOS ---
+
+  // Guardamos el rol para simular la vista del usuario
+  userRole: 'USER' | 'ADMIN' = 'USER';
+
+  // Fecha seleccionada en el calendario (empieza en null)
   selectedDate: string = '';
-  horaSeleccionada: string | null = null;
-  horariosDisponibles: { hora: string; disponible: boolean }[] = [];
-  diasNoDisponibles: string[] = [];
-  citas: Cita[] = [];
-  mensaje: string = '';
-  reservando = false;
-  form: FormGroup;
-  userRole: string = '';
-  username: string = '';
 
-  estadoEditando: { [id: number]: boolean } = {};
-  nuevoEstado: { [id: number]: string } = {};
-  citaSeleccionadaId: number | null = null;
-  mensajeEstado: string = '';
+  // Hora seleccionada por el usuario (empieza en null)
+  horaSeleccionada: string | null = null; // Guardará el 'valor' (ej: '14:00')
 
-  // Filtros para paginado
-  filtroFecha: string = '';
-  filtroEstado: string = '';
-  pagina: number = 0;
-  totalPaginas: number = 1;
-  pageSize: number = 10;
-  citasPaginadas: Cita[] = [];
+  // Variable simulada para 'Mis Citas'
+  citas: any[] = [];
 
-  constructor(
-    private fb: FormBuilder,
-    private citasService: CitasService,
-    private auth: AuthService
-  ) {
-    this.userRole = AuthHelper.getUserRole(this.auth.getAccessToken());
-    this.username = AuthHelper.getUsername(this.auth.getAccessToken());
-    this.form = this.fb.group({
-      nombre: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-    });
-    this.generarMeses();
-    this.cargarMisCitasUsuario();
-    // Autocompletar email si es USER
-    if (this.userRole === 'USER') {
-      const email = AuthHelper.decodeToken(this.auth.getAccessToken())?.email;
-      if (email) {
-        this.form.get('email')?.setValue(email);
-        this.form.get('email')?.disable();
-      }
-    }
+  // Variables simuladas para el calendario (app-calendar)
+  meses: any[] = [];
+  diasNoDisponibles: Date[] = []; // Ejemplo: [new Date(2024, 9, 26), new Date(2024, 9, 27)]
+
+
+  // --- TUS HORARIOS FIJOS ---
+
+  // Definimos tus 4 horarios como objetos estructurados
+  // Todos están 'disponibles: true' porque no hay lógica de backend.
+  horariosEstablecidos: Horario[] = [
+    { hora: '2:00 PM', valor: '14:00', disponible: true },
+    { hora: '4:00 PM', valor: '16:00', disponible: true },
+    { hora: '6:00 PM', valor: '18:00', disponible: true },
+    { hora: '7:30 PM', valor: '19:30', disponible: true }
+  ];
+
+  // Número de teléfono de la podóloga (formato internacional sin el +)
+  // Reemplázalo por tu número real
+  telefonoPodologa: string = '51903379990';
+
+
+  constructor() { }
+
+  ngOnInit(): void {
+    this.generarMeses(); // Generamos los meses para el calendario
   }
 
-  ngOnInit() {
-    const hoy = new Date();
-    this.filtroFecha = hoy.toISOString().slice(0, 10);
-    if (this.userRole === 'ADMIN') {
-      this.cargarCitasPaginadas();
-    }
+  /**
+   * Se ejecuta cuando el usuario selecciona una fecha en <app-calendar>
+   * @param date La fecha seleccionada (string)
+   */
+  onDateChange(date: string): void {
+    this.selectedDate = date;
+    this.horaSeleccionada = null; // IMPORTANTE: Reiniciar la hora si cambia la fecha
   }
 
-  mostrarSelectEstado(cita: any) {
-    this.estadoEditando[cita.id] = true;
-    this.nuevoEstado[cita.id] = cita.estado;
-  }
-
-  cambiarEstado(idCita: number) {
-    this.citaSeleccionadaId = idCita;
-  }
-
-  ejecutarCambioEstado(cita: any) {
-    this.citasService
-      .actualizarEstadoCita(cita.id, this.nuevoEstado[cita.id])
-      .subscribe({
-        next: (citaActualizada) => {
-          this.mensajeEstado = `La cita Nro: ${cita.id} fue actualizada a ${citaActualizada.estado}`;
-          setTimeout(() => {
-            this.mensajeEstado = '';
-          }, 1500);
-          this.estadoEditando[cita.id] = false;
-          this.citaSeleccionadaId = null;
-          this.cargarCitasPaginadas(); // Recargar citas paginadas
-          // Actualiza la lista de citas si es necesario
-        },
-        error: (err) => {
-          this.mensajeEstado = 'Error al actualizar el estado';
-          this.citaSeleccionadaId = null;
-        },
-      });
+  /**
+   * Se ejecuta cuando el usuario selecciona una hora
+   * @param valor El valor de 24h de la hora seleccionada (ej: '14:00')
+   */
+  selectHora(valor: string): void {
+    this.horaSeleccionada = valor;
   }
 
   generarMeses() {
@@ -148,176 +110,31 @@ export class CitasComponent {
     }
   }
 
-  cargarMisCitasUsuario() {
-    console.log('Cargando citas para el usuario:', this.userRole);
-    if (this.userRole === 'USER') {
-      this.citasService
-        .getCitasPorUsuario(this.username)
-        .subscribe((citas: Cita[]) => {
-          this.citas = citas;
-          this.marcarDiasNoDisponibles();
-        });
-    } else {
-      this.citas = [];
-      this.marcarDiasNoDisponibles();
-    }
-  }
-
-  cargarCitasPaginadas() {
-    this.citasService
-      .getCitasPaginadas(
-        this.pagina,
-        this.pageSize,
-        this.filtroFecha,
-        this.filtroEstado
-      )
-      .subscribe((res) => {
-        this.citasPaginadas = res.content || [];
-        this.totalPaginas = res.totalPages || 1;
-      });
-  }
-
-  onFiltroFechaChange(fecha: Event) {
-    const fechaTarget = fecha.target as HTMLInputElement;
-    this.filtroFecha = fechaTarget.value;
-    this.pagina = 0;
-    this.cargarCitasPaginadas();
-  }
-
-  onFiltroEstadoChange(estado: string) {
-    this.filtroEstado = estado;
-    this.pagina = 0;
-    this.cargarCitasPaginadas();
-  }
-
-  cambiarPagina(delta: number) {
-    const nuevaPagina = this.pagina + delta;
-    if (nuevaPagina >= 0 && nuevaPagina < this.totalPaginas) {
-      this.pagina = nuevaPagina;
-      this.cargarCitasPaginadas();
-    }
-  }
-
-  marcarDiasNoDisponibles() {
-    // Un día no está disponible si todos los horarios están reservados
-    const horarios = this.generarHorarios();
-    const reservasPorDia: Record<string, number> = {};
-    for (const cita of this.citas) {
-      reservasPorDia[cita.fecha!] = (reservasPorDia[cita.fecha!] || 0) + 1;
-    }
-    this.diasNoDisponibles = Object.entries(reservasPorDia)
-      .filter(([fecha, count]) => count >= horarios.length)
-      .map(([fecha]) => fecha);
-    // Marcar en this.meses
-    for (const mes of this.meses) {
-      for (const dia of mes.dias) {
-        if (this.diasNoDisponibles.includes(dia.fecha)) dia.disponible = false;
-      }
-    }
-  }
-
-  onDateChange(fecha: string) {
-    this.selectedDate = fecha;
-    this.horaSeleccionada = null;
-    this.generarHorariosDisponibles();
-  }
-
-  generarHorarios() {
-    const horarios: string[] = [
-      '14:00', // 2:00pm
-      '16:00', // 4:00pm
-      '18:00', // 6:00pm
-      '19:30'  // 7:30pm
-    ];
-    return horarios;
-  }
-
-  generarHorariosDisponibles() {
-    const horarios = this.generarHorarios();
-    const reservas = this.citas
-      .filter((c) => c.fecha === this.selectedDate)
-      .map((c) => c.hora);
-    this.horariosDisponibles = horarios.map((hora) => ({
-      hora,
-      disponible: !reservas.includes(hora),
-    }));
-  }
-
-  selectHora(hora: any) {
-    if (hora.disponible) {
-      this.horaSeleccionada = hora.hora;
-    }
-  }
-
-  abrirWhatsApp() {
+  /**
+   * Crea el mensaje profesional y abre WhatsApp con los datos seleccionados
+   */
+  abrirWhatsApp(): void {
     if (!this.selectedDate || !this.horaSeleccionada) {
-      return;
+      console.error('Error: Debes seleccionar fecha y hora antes de agendar.');
+      return; // Detener si falta información
     }
 
-    // Formatear la fecha en formato legible
-    const fecha = new Date(this.selectedDate + 'T00:00:00');
-    const fechaFormateada = fecha.toLocaleDateString('es-PE', {
+    // A. Formatear la fecha para que sea profesional (ej: Viernes, 25 de Octubre de 2024)
+    const opcionesFecha: Intl.DateTimeFormatOptions = {
       weekday: 'long',
-      year: 'numeric',
+      day: 'numeric',
       month: 'long',
-      day: 'numeric'
-    });
+      year: 'numeric'
+    };
+    const fechaFormateada = new Date(this.selectedDate).toLocaleDateString('es-ES', opcionesFecha);
 
-    // Crear el mensaje para WhatsApp
-    const mensaje = `Hola, me gustaría agendar una cita de podología para el *${fechaFormateada}* a las *${this.horaSeleccionada}*. ¿Está disponible?`;
+    // B. Crear el mensaje personalizado y profesional
+    const mensaje = `¡Hola! Me gustaría reservar una cita de podología en Clínica Diale para el día *${fechaFormateada}* a las *${this.horaSeleccionada}* horas.`;
 
-    // Codificar el mensaje para URL
-    const mensajeCodificado = encodeURIComponent(mensaje);
+    // C. Generar la URL de WhatsApp (codificando el mensaje)
+    const urlWa = `https://wa.me/${this.telefonoPodologa}?text=${encodeURIComponent(mensaje)}`;
 
-    // Número de WhatsApp (sin el +51)
-    const numeroWhatsApp = '51903379990';
-
-    // Crear el enlace de WhatsApp
-    const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeCodificado}`;
-
-    // Abrir en nueva ventana
-    window.open(urlWhatsApp, '_blank');
-  }
-
-  reservarCita() {
-    if (this.form.invalid || !this.selectedDate || !this.horaSeleccionada)
-      return;
-    this.reservando = true;
-    const cita = new Cita({
-      nombre: this.form.value.nombre,
-      email: this.form.get('email')?.value,
-      fecha: this.selectedDate,
-      hora: this.horaSeleccionada,
-      username: this.username || undefined,
-    });
-
-    this.citasService.reservarCita(cita).subscribe({
-      next: (res) => {
-        this.mensaje = '¡Cita reservada exitosamente!';
-        this.cargarMisCitasUsuario();
-        this.form.reset();
-
-        setTimeout(() => {
-          // Limpiar campos después de 1 segundo
-          this.horaSeleccionada = null;
-        }, 1000);
-
-        this.reservando = false;
-        // Si es USER, volver a setear el email y deshabilitar
-        if (this.userRole === 'USER') {
-          const email = AuthHelper.decodeToken(
-            this.auth.getAccessToken()
-          )?.email;
-          if (email) {
-            this.form.get('email')?.setValue(email);
-            this.form.get('email')?.disable();
-          }
-        }
-      },
-      error: () => {
-        this.mensaje = 'Error al reservar la cita. Intenta nuevamente.';
-        this.reservando = false;
-      },
-    });
+    // D. Abrir la URL en una nueva pestaña
+    window.open(urlWa, '_blank');
   }
 }

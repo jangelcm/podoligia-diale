@@ -4,7 +4,6 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-    --color-primary: #f0f7fa;
     --color-secondary: var(--color-blue-500);
     --text-primary-600: oklch(0.925 18);
 

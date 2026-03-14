@@ -12,10 +12,7 @@
                 <div class="text-xl font-bold text-primary-700 dark:text-primary-200 mb-2">
                     {{ product().precio | currency:'PEN':'symbol':'1.2-2' }}
                 </div>
-                <div class="text-sm" [ngClass]="product().stock === 0 ? 'text-red-500 font-bold' : 'text-gray-500'">
-                    <span *ngIf="product().stock! > 0">Stock: {{ product().stock }}</span>
-                    <span *ngIf="product().stock === 0">Agotado</span>
-                </div>
+
                 <div class="flex flex-col gap-2 mt-4">
                     <button (click)="goToCart()" [disabled]="product().stock === 0 || cantidad < 1"
                         class="flex items-center gap-2 px-4 py-2 bg-cyan-600 text-white rounded shadow hover:bg-cyan-700 transition disabled:opacity-50">
