@@ -9,9 +9,13 @@
         </div>
 
         <nav class="hidden md:flex items-center space-x-8">
+            <a routerLink="/" routerLinkActive="font-semibold text-cyan-600"
+                class="text-gray-700 hover:text-cyan-600 transition font-medium">
+                Inicio
+            </a>
             <a routerLink="/productos/list" routerLinkActive="font-semibold text-cyan-600"
                 class="text-gray-700 hover:text-cyan-600 transition font-medium">
-                Tratamientos
+                Productos personalizados
             </a>
 
             <a routerLink="/citas" routerLinkActive="font-semibold border-cyan-600 text-cyan-700 bg-cyan-50"
@@ -34,7 +38,6 @@
 
             <a routerLink="../carrito" routerLinkActive="font-semibold text-cyan-600"
                 class="flex items-center gap-2 group text-gray-700 hover:text-cyan-600 transition">
-                <span class="font-medium group-hover:underline">Mis productos</span>
                 <div
                     class="relative flex items-center justify-center p-2 rounded-full bg-gray-50 group-hover:bg-cyan-50 transition">
                     <svg class="w-6 h-6 text-gray-600 group-hover:text-cyan-600" fill="none" stroke="currentColor"
@@ -106,16 +109,17 @@
     <div appClickOutside (appClickOutside)="onBlurPanelMenu()"
         class="md:hidden absolute left-0 top-full w-full bg-white shadow-xl border-t border-cyan-100 z-50 animate-fadeInFast">
         <div class="max-w-7xl mx-auto px-5 py-6 space-y-3">
-
+            <a routerLink="/" (click)="closeMenu()"
+                class="flex items-center gap-3 py-3.5 px-5 rounded-xl text-gray-800 font-medium hover:bg-cyan-50 hover:text-cyan-700 transition">
+                Inicio
+            </a>
             <a routerLink="/productos/list" (click)="closeMenu()"
                 class="flex items-center gap-3 py-3.5 px-5 rounded-xl text-gray-800 font-medium hover:bg-cyan-50 hover:text-cyan-700 transition">
-                <span class="text-xl">🧴</span>
                 Tratamientos Personalizados
             </a>
 
             <a routerLink="/citas" (click)="closeMenu()"
                 class="flex items-center gap-3 py-3.5 px-5 rounded-xl bg-cyan-600 text-white font-semibold hover:bg-cyan-700 shadow-md transition transform hover:scale-[1.02]">
-                <span class="text-xl">📅</span>
                 Citas de Podología
             </a>
 
