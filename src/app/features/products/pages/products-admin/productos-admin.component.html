@@ -36,7 +36,7 @@
                 <tr *ngFor="let producto of productosFiltrados">
                     <td class="px-4 py-2">
                         <img [src]="producto.imagenUrl" alt="Imagen producto"
-                            class="h-14 w-14 object-cover rounded shadow" />
+                            class="h-14 w-14 object-cover rounded shadow" width="56" height="56" />
                     </td>
                     <td class="px-4 py-2 font-medium">{{ producto.nombre }}</td>
                     <td class="px-4 py-2 max-w-xs truncate">{{ producto.descripcion }}</td>
@@ -74,7 +74,7 @@
             class="bg-white dark:bg-slate-900 rounded-lg shadow p-4 flex flex-col gap-2">
             <div class="flex items-center gap-4">
                 <img [src]="producto.imagenUrl || '/public/preparados-magistrales/crema-hidratante.jpg'"
-                    alt="Imagen producto" class="h-16 w-16 object-cover rounded shadow" />
+                    alt="Imagen producto" class="h-16 w-16 object-cover rounded shadow" width="64" height="64" />
                 <div>
                     <div class="font-bold text-cyan-700 dark:text-cyan-200">{{ producto.nombre }}</div>
                     <div class="text-xs text-gray-500 dark:text-gray-300">Stock: {{ producto.stock }}</div>

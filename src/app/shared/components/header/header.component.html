@@ -4,7 +4,7 @@
 
         <div class="flex items-center flex-shrink-0">
             <a routerLink="/" class="flex items-center">
-                <img src="new-diale.jpg" alt="Diale Logo" class="h-20 w-auto mr-2" />
+                <img src="new-diale.jpg" alt="Diale Logo" class="h-20 w-auto mr-2" width="80" height="80" />
             </a>
         </div>
 
@@ -63,7 +63,8 @@
                 <button (click)="userMenuOpen = !userMenuOpen" aria-haspopup="true" aria-expanded="userMenuOpen"
                     class="flex items-center gap-2.5 px-3 py-2 rounded-lg hover:bg-gray-50 transition focus:outline-none focus:ring-2 focus:ring-cyan-200">
                     <img src="/home/avatar.jpg" alt="Avatar Usuario"
-                        class="w-9 h-9 rounded-full bg-cyan-100 object-cover border border-cyan-200" />
+                        class="w-9 h-9 rounded-full bg-cyan-100 object-cover border border-cyan-200" width="36"
+                        height="36" />
                     <div class="hidden sm:block text-left">
                         <span class="block text-sm font-semibold text-cyan-800">{{ getUsername() }}</span>
                         <span class="block text-xs text-gray-500">{{ getUserRole() }}</span>
