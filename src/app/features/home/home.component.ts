@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
-import { ContactComponent } from 'shared/components/contact/contact.component';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { CarouselComponent, CarouselItem } from '../../shared/components/carousel/carousel.component';
+import { CarouselItem } from '../../shared/components/carousel/carousel.component';
 import { RouterLink } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
 
@@ -9,7 +8,7 @@ import { Meta, Title } from '@angular/platform-browser';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
-  imports: [ContactComponent, CommonModule, CarouselComponent, RouterLink],
+  imports: [CommonModule, RouterLink],
 })
 export class HomeComponent implements OnInit {
   showMore: boolean = false;
