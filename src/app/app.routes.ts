@@ -4,6 +4,7 @@ import { CitasComponent } from './features/citas/citas.component';
 import { LoginComponent } from './features/auth/login/login.component';
 import { HomeComponent } from 'features/home/home.component';
 import { VentasAdminComponent } from 'features/ventas-admin/ventas-admin.component';
+import { TallerComponent } from 'features/taller/taller/taller.component';
 export const routes: Routes = [
 
   {
@@ -37,5 +38,10 @@ export const routes: Routes = [
     path: 'login',
     component: LoginComponent,
     title: 'Iniciar sesión',
+  },
+  {
+    path: 'taller',
+    component: TallerComponent,
+    title: 'Taller',
   },
 ];
