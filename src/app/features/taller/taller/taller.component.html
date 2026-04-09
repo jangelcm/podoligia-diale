@@ -117,32 +117,42 @@
                     </article>
 
                     <article
-                        class="relative overflow-hidden bg-white rounded-3xl md:shadow-xl transform hover:scale-[1.01] transition-transform duration-300">
-                        <img src="desinfectante_calzado.png" alt="Desinfectante"
-                            class="absolute inset-0 w-full h-full object-cover object-center opacity-70 transition-opacity duration-300 scale-105 " />
+                        class="flex flex-col md:relative overflow-hidden bg-white rounded-3xl md:shadow-xl transform hover:scale-[1.01] transition-transform duration-300 group">
 
                         <div
-                            class="relative p-10 space-y-8 bg-gradient-to-t from-black/30 via-transparent to-transparent">
+                            class="relative p-6 sm:p-10 space-y-8 mg:bg-white md:bg-gradient-to-t md:from-black/30 md:via-transparent md:to-transparent order-1 md:order-none z-10">
                             <div class="border-b-2 border-neutral-200 pb-6">
-                                <h3 class="text-4xl font-extrabold text-teal-600 tracking-tight">DESINFECTANTE DE
-                                    CALZADO</h3>
-                                <p class="text-neutral-500 text-lg mt-1">Esencias de Diale - Higiene</p>
+                                <h3 class="text-3xl sm:text-4xl font-extrabold text-teal-600 tracking-tight">
+                                    DESINFECTANTE DE CALZADO
+                                </h3>
+                                <p class="text-neutral-500 text-base sm:text-lg mt-1">
+                                    Esencias de Diale - Higiene
+                                </p>
                             </div>
-                            <div class="grid md:grid-cols-2 gap-10">
+
+                            <div class="grid md:grid-cols-2 gap-8 md:gap-10">
                                 <div
-                                    class="bg-neutral-100 p-8 rounded-2xl border border-neutral-200 shadow-inner space-y-5">
-                                    <p class="text-2xl font-bold text-neutral-900 border-b-2 pb-3">Ingredientes:</p>
-                                    <ul class="list-disc list-inside text-xl text-neutral-800 space-y-2.5 pl-3">
+                                    class="bg-neutral-100 p-6 sm:p-8 rounded-2xl border border-neutral-200 shadow-inner space-y-4 sm:space-y-5">
+                                    <p class="text-xl sm:text-2xl font-bold text-neutral-900 border-b-2 pb-3">
+                                        Ingredientes:
+                                    </p>
+                                    <ul
+                                        class="list-disc list-inside text-lg sm:text-xl text-neutral-800 space-y-2 sm:space-y-2.5 pl-3">
                                         <li>1 litro alcohol 96</li>
                                         <li>Aceite esencial tea tree 2.5 gr</li>
                                     </ul>
                                     <p
-                                        class="text-neutral-600 text-lg italic bg-neutral-200 p-4 rounded-xl shadow-inner">
-                                        *Salen aprox 8 frascos de 120ml. Costo aprox s/5 soles por frasco.*</p>
+                                        class="text-neutral-600 text-base sm:text-lg italic bg-neutral-200 p-4 rounded-xl shadow-inner">
+                                        *Salen aprox 8 frascos de 120ml. Costo aprox s/5 soles por frasco.*
+                                    </p>
                                 </div>
-                                <div class="space-y-6">
-                                    <p class="text-2xl font-bold text-neutral-900 border-b-2 pb-3">Procedimiento:</p>
-                                    <ol class="list-decimal list-inside text-xl text-neutral-800 space-y-2 pl-3">
+
+                                <div class="space-y-4 sm:space-y-6">
+                                    <p class="text-xl sm:text-2xl font-bold text-neutral-900 border-b-2 pb-3">
+                                        Procedimiento:
+                                    </p>
+                                    <ol
+                                        class="list-decimal list-inside text-lg sm:text-xl text-neutral-800 font-bold space-y-1.5 sm:space-y-2 pl-3">
                                         <li>Pesar y mezclar en frasco con spray. Usar.</li>
                                         <li>Esperar 24 horas antes del primer uso. Aplicar todas las noches dentro del
                                             calzado.</li>
@@ -150,8 +160,16 @@
                                 </div>
                             </div>
                         </div>
-                    </article>
 
+                        <div
+                            class="relative w-full h-60 md:h-full md:absolute md:inset-0 order-2 md:order-none overflow-hidden">
+                            <img src="desinfectante_calzado.png" alt="Desinfectante" class="w-full h-full object-cover object-center transition-all duration-300 scale-105 group-hover:scale-110 
+                    blur-[2px] md:blur-sm opacity-90 md:opacity-70" />
+
+                            <div class="absolute inset-0 bg-black/10 md:hidden"></div>
+                        </div>
+
+                    </article>
                     <article
                         class="relative overflow-hidden bg-white xl:col-span-2 rounded-3xl md:shadow-xl transform hover:scale-[1.01] transition-transform duration-300">
                         <img src="serum.png" alt="Sérum"
@@ -160,7 +178,7 @@
                         <div
                             class="relative p-10 space-y-10 bg-gradient-to-t from-black/40 via-transparent to-transparent">
                             <div class="border-b-2 border-neutral-200 pb-6 text-center">
-                                <h3 class="text-5xl font-extrabold text-purple-700 tracking-tight">SÉRUMS Y
+                                <h3 class="md:text-5xl text-4xl font-extrabold text-purple-700 tracking-tight">SÉRUMS Y
                                     REGENERADORES</h3>
                                 <p class="text-neutral-500 text-xl mt-1 max-w-xl mx-auto">Esencias de Diale -
                                     Tratamientos</p>
